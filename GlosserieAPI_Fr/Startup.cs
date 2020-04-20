@@ -13,6 +13,8 @@ namespace GlosserieAPI_Fr
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+
+
         }
     }
 }
