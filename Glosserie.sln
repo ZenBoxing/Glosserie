@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserInterface", "UserInterf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlosserieAPI_Fr", "GlosserieAPI_Fr\GlosserieAPI_Fr.csproj", "{D8150B0F-2E71-477A-90C6-56F0500B529F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlosserieDesktopUI_Fr", "GlosserieDesktopUI_Fr\GlosserieDesktopUI_Fr.csproj", "{D94D6BAE-5725-4EE8-96E5-9338B39616A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{D8150B0F-2E71-477A-90C6-56F0500B529F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8150B0F-2E71-477A-90C6-56F0500B529F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8150B0F-2E71-477A-90C6-56F0500B529F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D94D6BAE-5725-4EE8-96E5-9338B39616A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D94D6BAE-5725-4EE8-96E5-9338B39616A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D94D6BAE-5725-4EE8-96E5-9338B39616A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D94D6BAE-5725-4EE8-96E5-9338B39616A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +56,7 @@ Global
 		{25D57DB0-129C-46A6-A0C9-0CB06B98A8AF} = {5934A692-23EA-4D09-AFAE-6E6C09F8AB18}
 		{DAA8B1E7-1410-4B7E-909A-F6E6F2751A3C} = {F25E4FF4-2628-4AA5-96C2-5932650441A7}
 		{D8150B0F-2E71-477A-90C6-56F0500B529F} = {33FEA9F1-74E2-4CE2-85DE-42EE0A3D7EEF}
+		{D94D6BAE-5725-4EE8-96E5-9338B39616A1} = {F25E4FF4-2628-4AA5-96C2-5932650441A7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8FC68729-AA00-477C-AA79-DF7D1B0C282E}
