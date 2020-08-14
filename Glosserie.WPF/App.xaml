@@ -1,13 +1,11 @@
-﻿<Application x:Class="GlosserieDesktopUI_Fr.App"
+﻿<Application x:Class="Glosserie.WPF.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:GlosserieDesktopUI_Fr">
+             xmlns:local="clr-namespace:Glosserie.WPF">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary>
-                    <local:Bootstrapper x:Key="Bootstrapper"/>
-                </ResourceDictionary>
+                <ResourceDictionary Source="/Styles/Common.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
