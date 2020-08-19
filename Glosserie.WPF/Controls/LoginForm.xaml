@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="Glosserie.WPF.Controls.LoginForm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Glosserie.WPF.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="250" d:DesignWidth="250"
+             FontFamily="{StaticResource MontserratLight}">
+    <Border BorderBrush="{StaticResource MidnightBlueBrush}"
+            BorderThickness="5"
+            CornerRadius="10"
+            MaxHeight="250"
+            MaxWidth="250">
+        <Grid Background="{StaticResource MidnightBlueBrush}"
+              MaxHeight="250"
+              MaxWidth="250"
+              RenderOptions.EdgeMode="Aliased">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Glosserie"
+                       FontSize="24"
+                       Foreground="{StaticResource BrushPrimary3}"
+                       Grid.Row="0"
+                       Background="{StaticResource MidnightBlueBrush}"/>
+            <StackPanel Orientation="Vertical"
+                        Grid.Row="1">
+                <TextBlock Text="Email: "
+                           FontSize="12"/>
+                <TextBox/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical"
+                        Grid.Row="2">
+                <TextBlock Text="Password: "
+                           FontSize="12"/>
+                <TextBox/>
+            </StackPanel>
+            <Button Grid.Row="3" Style="{StaticResource LoginButton}"
+                    Margin="0 10 0 0"
+                    MaxHeight="35"
+                    MaxWidth="175">
+            </Button>
+        </Grid>
+        
+    </Border>
+            
+    
+</UserControl>

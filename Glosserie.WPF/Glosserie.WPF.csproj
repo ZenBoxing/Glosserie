@@ -7,7 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controls\" />
+    <None Remove="Fonts\Montserrat-Light.otf" />
+    <None Remove="Fonts\Montserrat-Regular.otf" />
+    <None Remove="Fonts\Montserrat-SemiBold.otf" />
+    <None Remove="Images\Lock05.png" />
+    <None Remove="Images\LoginButton.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Fonts\Montserrat-Light.otf" />
+    <Resource Include="Fonts\Montserrat-Regular.otf" />
+    <Resource Include="Fonts\Montserrat-SemiBold.otf" />
+    <Resource Include="Images\Lock05.png" />
+    <Resource Include="Images\LoginButton.png" />
   </ItemGroup>
 
 </Project>
