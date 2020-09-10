@@ -3,21 +3,24 @@
                     xmlns:local="clr-namespace:Glosserie.WPF.Styles">
     
     <!--Colors-->
-    <Color x:Key="ColorPrimary1">#111344</Color>
-    <Color x:Key="ColorPrimary2">#EFE9E7</Color>
-    <Color x:Key="ColorPrimary3">#DAE0F2</Color>
+    <Color x:Key="RussianViolet">#111344</Color>
+    <Color x:Key="Isabelline">#EFE9E7</Color>
+    <Color x:Key="LavenderWeb">#DAE0F2</Color>
     <Color x:Key="MidnightBlue">#181B62</Color>
+    <Color x:Key="BabyPowder">#FDFFFC</Color>
     
     <!--Brushes-->
-    <SolidColorBrush x:Key="BrushPrimary1" Color="{StaticResource ColorPrimary1}"/>
-    <SolidColorBrush x:Key="BrushPrimary2" Color="{StaticResource ColorPrimary2}"/>
-    <SolidColorBrush x:Key="BrushPrimary3" Color="{StaticResource ColorPrimary3}"/>
+    <SolidColorBrush x:Key="RussianVioletBrush" Color="{StaticResource RussianViolet}"/>
+    <SolidColorBrush x:Key="IsabellineBrush" Color="{StaticResource Isabelline}"/>
+    <SolidColorBrush x:Key="LavenderWebBrush" Color="{StaticResource LavenderWeb}"/>
     <SolidColorBrush x:Key="MidnightBlueBrush" Color="{StaticResource MidnightBlue}"/>
+    <SolidColorBrush x:Key="BabyPowderBrush" Color="{StaticResource BabyPowder}"/>
     
     <!--Fonts-->
     <FontFamily x:Key="MontserratLight">pack://application;,,,/Fonts/#Montserrat Light</FontFamily>   
     <FontFamily x:Key="MontserratRegular">pack://application;,,,/Fonts/#Montserrat Regular</FontFamily>   
-    <FontFamily x:Key="MontserratSemiBold">pack://application;,,,/Fonts/#Montserrat SemiBold</FontFamily>   
-    
+    <FontFamily x:Key="MontserratSemiBold">pack://application;,,,/Fonts/#Montserrat SemiBold</FontFamily>
+
+    <Image x:Key="BookShelf" Source="/Images/BookShelfMain.png"/>
 
 </ResourceDictionary>

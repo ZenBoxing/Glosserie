@@ -10,8 +10,13 @@
     <None Remove="Fonts\Montserrat-Light.otf" />
     <None Remove="Fonts\Montserrat-Regular.otf" />
     <None Remove="Fonts\Montserrat-SemiBold.otf" />
+    <None Remove="Images\BookShelfMain.png" />
     <None Remove="Images\Lock05.png" />
     <None Remove="Images\LoginButton.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\BookShelfMain.png" />
   </ItemGroup>
 
   <ItemGroup>

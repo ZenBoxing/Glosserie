@@ -23,24 +23,27 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Glosserie"
-                       FontSize="24"
-                       Foreground="{StaticResource BrushPrimary3}"
-                       Grid.Row="0"
-                       Background="{StaticResource MidnightBlueBrush}"/>
+            <Image Source="/Images/BookShelfMain.png"
+                   Grid.Row="0"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   MaxHeight="40"
+                   MaxWidth="40"/>
             <StackPanel Orientation="Vertical"
                         Grid.Row="1">
                 <TextBlock Text="Email: "
                            FontSize="12"/>
-                <TextBox/>
+                <TextBox Style="{StaticResource UserNameTextBox}"
+                         Tag="USERNAME"/>
             </StackPanel>
             <StackPanel Orientation="Vertical"
                         Grid.Row="2">
                 <TextBlock Text="Password: "
                            FontSize="12"/>
-                <TextBox/>
+                <TextBox Style="{StaticResource UserNameTextBox}"
+                         Tag="PASSWORD"/>
             </StackPanel>
-            <Button Grid.Row="3" Style="{StaticResource LoginButton}"
+            <Button Style="{StaticResource SignInButton}" Grid.Row="3" Content="SIGN-IN"
                     Margin="0 10 0 0"
                     MaxHeight="35"
                     MaxWidth="175">

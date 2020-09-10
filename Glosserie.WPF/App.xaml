@@ -8,7 +8,8 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Styles/Common.xaml"/>
-                <ResourceDictionary Source="/Styles/LoginForm.xaml"/>
+                <ResourceDictionary Source="/Styles/Buttons.xaml"/>
+                <ResourceDictionary Source="/Styles/TextBoxes.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModels:LoginViewModel}">

@@ -12,17 +12,17 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border BorderThickness="5" BorderBrush="{StaticResource BrushPrimary3}"
-                            CornerRadius="20">
-                        <Grid Background="{TemplateBinding Background}">
-                            <StackPanel Orientation="Horizontal" Background="{TemplateBinding Background}"
+                        <Border BorderThickness="1" BorderBrush="{StaticResource BrushPrimary3}"
+                            CornerRadius="5">
+                            <Grid Background="{TemplateBinding Background}" RenderOptions.EdgeMode="Unspecified">
+                                <StackPanel Orientation="Horizontal" Background="{TemplateBinding Background}"
                                         HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <Image Source="/Images/Lock05.png" Margin="2" VerticalAlignment="Center"/>
-                                <TextBlock Text="SIGN-IN" Margin="2" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                    <Image Source="/Images/Lock05.png" Margin="2" VerticalAlignment="Center"/>
+                                    <TextBlock Text="SIGN-IN" Margin="2" VerticalAlignment="Center" HorizontalAlignment="Center"
                                    Foreground="{TemplateBinding Foreground}"/>
-                            </StackPanel>
-                        </Grid>
-                    </Border>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
