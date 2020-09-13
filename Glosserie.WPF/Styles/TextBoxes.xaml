@@ -40,10 +40,10 @@
                                    FontFamily="{StaticResource MontserratRegular}"
                                    Background="Transparent"
                                    VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"
+                                   HorizontalAlignment="Left"
                                    Opacity="0.9"
                                    Foreground="{StaticResource RussianVioletBrush}"
-                                   Margin="0 3"
+                                   Margin="4 3"
                                    >
                             <TextBlock.Style>
                                 <Style TargetType="TextBlock">
@@ -64,10 +64,8 @@
                             <Setter Property="Opacity" TargetName="border" Value="0.56"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.Border}"/>
                         </Trigger>
                         <Trigger Property="IsKeyboardFocused" Value="true">
-                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.Border}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

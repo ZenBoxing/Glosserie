@@ -10,12 +10,20 @@
     <None Remove="Fonts\Montserrat-Light.otf" />
     <None Remove="Fonts\Montserrat-Regular.otf" />
     <None Remove="Fonts\Montserrat-SemiBold.otf" />
+    <None Remove="Images\BookShelf4.png" />
+    <None Remove="Images\BookShelfLG.png" />
     <None Remove="Images\BookShelfMain.png" />
+    <None Remove="Images\LibraryBooks1.png" />
+    <None Remove="Images\LibraryBooksWF.png" />
+    <None Remove="Images\Lock.png" />
     <None Remove="Images\Lock05.png" />
     <None Remove="Images\LoginButton.png" />
+    <None Remove="Images\UserSignIn.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\BookShelf4.png" />
+    <Resource Include="Images\BookShelfLG.png" />
     <Resource Include="Images\BookShelfMain.png" />
   </ItemGroup>
 
@@ -23,8 +31,12 @@
     <Resource Include="Fonts\Montserrat-Light.otf" />
     <Resource Include="Fonts\Montserrat-Regular.otf" />
     <Resource Include="Fonts\Montserrat-SemiBold.otf" />
+    <Resource Include="Images\LibraryBooks1.png" />
+    <Resource Include="Images\LibraryBooksWF.png" />
+    <Resource Include="Images\Lock.png" />
     <Resource Include="Images\Lock05.png" />
     <Resource Include="Images\LoginButton.png" />
+    <Resource Include="Images\UserSignIn.png" />
   </ItemGroup>
 
 </Project>
