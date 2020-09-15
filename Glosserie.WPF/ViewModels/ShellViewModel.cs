@@ -6,7 +6,7 @@ namespace Glosserie.WPF.ViewModels
 {
     public class ShellViewModel : ViewModelBase
     {
-		private ViewModelBase _activeViewModel = new LoginViewModel();
+		private ViewModelBase _activeViewModel = new HomeViewModel();
 
 		public ViewModelBase ActiveViewModel
 		{

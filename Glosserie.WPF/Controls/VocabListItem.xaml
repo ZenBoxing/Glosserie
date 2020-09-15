@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="Glosserie.WPF.Controls.VocabListItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Glosserie.WPF.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="60" d:DesignWidth="400">
+    <Grid Background="{StaticResource LavenderWebBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Image Grid.Column="0"
+               Source="/Images/BookClosedWF.png"/>
+        <TextBlock Grid.Column="1"
+                   Text="{Binding ListName, FallbackValue=[Title]}"
+                   VerticalAlignment="Center"
+                   FontSize="24"
+                   FontFamily="{StaticResource MontserratSemiBold}"
+                   Foreground="{StaticResource RussianVioletBrush}"
+                   TextTrimming="CharacterEllipsis"/>
+        <TextBlock Grid.Column="2"
+                   Text="50"
+                   VerticalAlignment="Center"
+                   FontSize="24"
+                   FontFamily="{StaticResource MontserratSemiBold}"
+                   Foreground="{StaticResource RussianVioletBrush}"
+                   Margin="5 0 0 0"/>
+    </Grid>
+</UserControl>

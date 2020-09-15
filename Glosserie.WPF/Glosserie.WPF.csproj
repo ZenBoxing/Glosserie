@@ -10,6 +10,7 @@
     <None Remove="Fonts\Montserrat-Light.otf" />
     <None Remove="Fonts\Montserrat-Regular.otf" />
     <None Remove="Fonts\Montserrat-SemiBold.otf" />
+    <None Remove="Images\BookClosedWF.png" />
     <None Remove="Images\BookShelf4.png" />
     <None Remove="Images\BookShelfLG.png" />
     <None Remove="Images\BookShelfMain.png" />
@@ -22,6 +23,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Glosserie.WPF.Library\Glosserie.WPF.Library.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\BookClosedWF.png" />
     <Resource Include="Images\BookShelf4.png" />
     <Resource Include="Images\BookShelfLG.png" />
     <Resource Include="Images\BookShelfMain.png" />
