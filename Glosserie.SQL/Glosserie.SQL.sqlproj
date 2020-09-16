@@ -122,6 +122,8 @@
     <Folder Include="dbo\" />
     <Folder Include="dbo\Tables\" />
     <Folder Include="Security\" />
+    <Folder Include="listeradb\Stored Procedures" />
+    <Folder Include="Publish Locations" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="listeradb\Tables\entries.sql" />
@@ -132,5 +134,8 @@
     <Build Include="Security\listeradb.sql" />
     <Build Include="Security\m2ss.sql" />
     <Build Include="Security\Permissions.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Publish Locations\Glosserie.SQL.publish.xml" />
   </ItemGroup>
 </Project>
