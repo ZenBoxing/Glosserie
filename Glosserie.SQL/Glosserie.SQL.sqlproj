@@ -134,6 +134,12 @@
     <Build Include="Security\listeradb.sql" />
     <Build Include="Security\m2ss.sql" />
     <Build Include="Security\Permissions.sql" />
+    <Build Include="listeradb\Stored Procedures\spGetListByUserID.sql" />
+    <Build Include="listeradb\Stored Procedures\spGetEntriesByList.sql" />
+    <Build Include="listeradb\Stored Procedures\spGetUserByID.sql" />
+    <Build Include="listeradb\Stored Procedures\spGetAllEntries.sql" />
+    <Build Include="listeradb\Stored Procedures\spInsertVocabList.sql" />
+    <Build Include="listeradb\Stored Procedures\spInsertListEntries.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Publish Locations\Glosserie.SQL.publish.xml" />

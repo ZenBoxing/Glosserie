@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [listeradb].[vocablists] (
     [listID]   BIGINT        IDENTITY (1, 1) NOT NULL,
     [userID]   BIGINT        NOT NULL,
-    [listname] NVARCHAR (50) NOT NULL,
+    [listname] NVARCHAR (100) NOT NULL,
     CONSTRAINT [PK_lists_listID] PRIMARY KEY CLUSTERED ([listID] ASC)
 );
 
