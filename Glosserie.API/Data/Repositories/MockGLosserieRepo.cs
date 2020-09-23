@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Glosserie.API.Data
 {
-    public class MockGLosserieRepo : IGlosserieRepo
+    public class MockGLosserieRep
     {
         public IEnumerable<EntryModel> GetAllEntries()
         {

@@ -1,4 +1,5 @@
-﻿using Glosserie.API.Models;
+﻿using Glosserie.API.Data.DataAccess;
+using Glosserie.API.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,14 @@ namespace Glosserie.API.Data.Repositories
 {
     public class SqlGlosserieRepo : IGlosserieRepo
     {
+        private readonly ISqlDataAccess _sqlDataAccess;
+
+        public SqlGlosserieRepo(ISqlDataAccess sqlDataAccess)
+        {
+            _sqlDataAccess = sqlDataAccess;
+        }
+
+
         public void CreateVocabList(List<EntryModel> wordList)
         {
             throw new NotImplementedException();
@@ -30,7 +39,10 @@ namespace Glosserie.API.Data.Repositories
 
         public IEnumerable<VocabListModel> GetVocabLists()
         {
-            throw new NotImplementedException();
+            var records = _sqlDataAccess.LoadData<VocabListModel, dynamic>
+                ("ListeraDB.listeradb.spGetVocabLists", new { }, "Glosserie");
+
+            return records;
         }
 
         public IEnumerable<VocabListModel> GetVocabListsById(int listId)

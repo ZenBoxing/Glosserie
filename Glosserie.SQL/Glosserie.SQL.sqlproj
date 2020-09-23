@@ -140,6 +140,7 @@
     <Build Include="listeradb\Stored Procedures\spGetAllEntries.sql" />
     <Build Include="listeradb\Stored Procedures\spInsertVocabList.sql" />
     <Build Include="listeradb\Stored Procedures\spInsertListEntries.sql" />
+    <Build Include="listeradb\Stored Procedures\spGetVocabLists.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Publish Locations\Glosserie.SQL.publish.xml" />

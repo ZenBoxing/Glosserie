@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Glosserie.API.Data;
 using Glosserie.API.Data.DataAccess;
+using Glosserie.API.Data.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,7 +30,7 @@ namespace Glosserie.API
         {
             services.AddControllers();
 
-            services.AddScoped<IGlosserieRepo, MockGLosserieRepo>();
+            services.AddScoped<IGlosserieRepo, SqlGlosserieRepo>();
             services.AddScoped<ISqlDataAccess, SqlDataAccess>();
         }
 
