@@ -3,11 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i ="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:vm="clr-namespace:Glosserie.WPF.ViewModels"
              xmlns:local="clr-namespace:Glosserie.WPF.Views"
              xmlns:controls="clr-namespace:Glosserie.WPF.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <controls:VocabListItem Height="60"/>
+             d:DesignHeight="450" d:DesignWidth="800"
+             >
+    <Grid Background="Aqua">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="{Binding Testing}"></TextBlock>
+        <TextBlock Grid.Row="1" Text="HEllo"></TextBlock>
     </Grid>
 </UserControl>

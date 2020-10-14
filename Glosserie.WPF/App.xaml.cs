@@ -1,4 +1,7 @@
-﻿using Glosserie.WPF.ViewModels;
+﻿using Glosserie.WPF.Library.Services;
+using Glosserie.WPF.ViewModels;
+using Glosserie.WPF.ViewModels.Factories;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -16,10 +19,26 @@ namespace Glosserie.WPF
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            Window window = new MainWindow();
-            window.DataContext = new ShellViewModel();
+            IServiceProvider serviceProvider = CreateServiceProvider();
+            Window window = serviceProvider.GetRequiredService<MainWindow>();
             window.Show();
             base.OnStartup(e);
+        }
+
+        private IServiceProvider CreateServiceProvider()
+        {
+            IServiceCollection services = new ServiceCollection();
+
+            services.AddSingleton<IVocabListService, VocabListService>();
+
+            services.AddSingleton<IViewModelAbstractFactory, ViewModelAbstractFactory>();
+            services.AddSingleton<IViewModelFactory<HomeViewModel>, HomeViewModelFactory>();
+            services.AddSingleton<IViewModelFactory<VocabListsViewModel>, VocabListsViewModelFactory>();
+
+            services.AddScoped<ShellViewModel>();
+            services.AddScoped<MainWindow>(s => new MainWindow(s.GetRequiredService<ShellViewModel>()));
+
+            return services.BuildServiceProvider();
         }
     }
 }

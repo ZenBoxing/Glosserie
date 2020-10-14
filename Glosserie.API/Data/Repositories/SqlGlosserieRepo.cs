@@ -40,7 +40,7 @@ namespace Glosserie.API.Data.Repositories
         public IEnumerable<VocabListModel> GetVocabLists()
         {
             var records = _sqlDataAccess.LoadData<VocabListModel, dynamic>
-                ("ListeraDB.listeradb.spGetVocabLists", new { }, "Glosserie");
+                ("ListeraDB.listeradb.spGetVocabLists", new { }, "GlosserieSSAuth");
 
             return records;
         }
