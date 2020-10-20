@@ -7,16 +7,13 @@
              xmlns:vm="clr-namespace:Glosserie.WPF.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid DataContext="{Binding HomeViewModel}" Background="{StaticResource BabyPowderBrush}">
-        <ScrollViewer VerticalScrollBarVisibility="Auto"
-                      HorizontalScrollBarVisibility="Disabled">
-            <ItemsControl ItemsSource="{Binding VocabLists}">
+    <Grid DataContext="{Binding VocabListsViewModel}" Background="{StaticResource BabyPowderBrush}">
+            <ListBox ItemsSource="{Binding VocabLists}" Margin="0,1,0,-1">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <local:VocabListItem/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </ScrollViewer>
+            </ListBox>
     </Grid>
 </UserControl>

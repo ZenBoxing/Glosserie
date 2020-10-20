@@ -12,9 +12,10 @@ namespace Glosserie.WPF.ViewModels
 {
     public class VocabListsViewModel : ViewModelBase
     {
-		public string StatusMessage;
-		private BindingList<VocabListModel> _vocabLists;
 		public string BindingTest { get; set; } = "Bound to vocablists";
+		public string StatusMessage;
+
+		private BindingList<VocabListModel> _vocabLists;
 
 		public BindingList<VocabListModel> VocabLists
 		{
@@ -23,11 +24,25 @@ namespace Glosserie.WPF.ViewModels
 			{
 				_vocabLists = value;
 				OnPropertyChanged(nameof(VocabLists));
+				OnPropertyChanged(nameof(VocabListItemViewModels));
 			}
 		}
 
+		private List<VocabListItemViewModel> _vocabListItemViewModels;
+
+		public List<VocabListItemViewModel> VocabListItemViewModels
+		{
+			get { return _vocabListItemViewModels; }
+			set 
+			{
+				_vocabListItemViewModels = value;
+				OnPropertyChanged(nameof(VocabListItemViewModels));
+			}
+		}
+
+
 		private readonly IVocabListService _vocabListService;
-		public ICommand LoadVocabListsCommand;
+		public ICommand LoadVocabListsCommand { get; set; }
 
 		public VocabListsViewModel(IVocabListService vocabListService)
 		{
@@ -51,7 +66,20 @@ namespace Glosserie.WPF.ViewModels
 
 			var records = await _vocabListService.GetVocabLists();
 			VocabLists = new BindingList<VocabListModel>(records);
-
+			VocabListItemViewModels = CreateVocabListViewModels(VocabLists);
 		}
+
+		private List<VocabListItemViewModel> CreateVocabListViewModels(ICollection<VocabListModel> vocabListModels)
+		{
+			List<VocabListItemViewModel> itemList = new List<VocabListItemViewModel>();
+			foreach (var item in vocabListModels)
+			{
+				itemList.Add(new VocabListItemViewModel{ Title = item.ListName});
+			}
+
+			return itemList;
+		}
+
+		
 	}
 }
