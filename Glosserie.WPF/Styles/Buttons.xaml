@@ -104,9 +104,9 @@
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
         <Setter Property="Foreground" Value="{StaticResource RussianVioletBrush}"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="FontFamily" Value="{StaticResource MontserratSemiBold}"/>
-        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontFamily" Value="{StaticResource MontserratLight}"/>
+        <Setter Property="FontSize" Value="16"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Padding" Value="1"/>
@@ -117,9 +117,9 @@
                             BorderThickness="{TemplateBinding BorderThickness}" 
                             BorderBrush="{TemplateBinding BorderBrush}"
                             SnapsToDevicePixels="true">
-                        <StackPanel Orientation="Vertical">
-                            <Image Source="/Images/Edit.png" HorizontalAlignment="Center"/>
-                            <TextBlock Text="EDIT" HorizontalAlignment="Center"
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                            <Image Source="/Images/Edit.png" HorizontalAlignment="Center" Height="50" Width="50"/>
+                            <TextBlock Text="EDIT" HorizontalAlignment="Center" 
                                        Foreground="{StaticResource BabyPowderBrush}"/>
                         </StackPanel>
                     </Border>
@@ -152,9 +152,9 @@
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
         <Setter Property="Foreground" Value="{StaticResource RussianVioletBrush}"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="FontFamily" Value="{StaticResource MontserratSemiBold}"/>
-        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontFamily" Value="{StaticResource MontserratLight}"/>
+        <Setter Property="FontSize" Value="16"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Padding" Value="1"/>
@@ -165,8 +165,8 @@
                             BorderThickness="{TemplateBinding BorderThickness}" 
                             BorderBrush="{TemplateBinding BorderBrush}"
                             SnapsToDevicePixels="true">
-                        <StackPanel Orientation="Vertical">
-                            <Image Source="/Images/Delete.png" HorizontalAlignment="Center"/>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                            <Image Source="/Images/Delete.png" HorizontalAlignment="Center"  Height="50" Width="50"/>
                             <TextBlock Text="DELETE" HorizontalAlignment="Center"
                                        Foreground="{StaticResource BabyPowderBrush}"/>
                         </StackPanel>
@@ -199,9 +199,9 @@
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
         <Setter Property="Foreground" Value="{StaticResource RussianVioletBrush}"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="FontFamily" Value="{StaticResource MontserratSemiBold}"/>
-        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontFamily" Value="{StaticResource MontserratLight}"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Padding" Value="1"/>
@@ -212,8 +212,8 @@
                             BorderThickness="{TemplateBinding BorderThickness}" 
                             BorderBrush="{TemplateBinding BorderBrush}"
                             SnapsToDevicePixels="true">
-                        <StackPanel Orientation="Vertical">
-                            <Image Source="/Images/Open.png" HorizontalAlignment="Center"/>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                            <Image Source="/Images/Open.png" HorizontalAlignment="Center" Height="50" Width="50"/>
                             <TextBlock Text="OPEN" HorizontalAlignment="Center"
                                        Foreground="{StaticResource BabyPowderBrush}"/>
                         </StackPanel>
@@ -239,5 +239,54 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
+    
+    <!--Create Button For Home View-->
+    <Style x:Key="CreateButton" TargetType="{x:Type Button}">
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+        <Setter Property="Foreground" Value="{StaticResource RussianVioletBrush}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontFamily" Value="{StaticResource MontserratLight}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border" Background="{TemplateBinding Background}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            SnapsToDevicePixels="true">
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                            <Image Source="/Images/Create.png" HorizontalAlignment="Center" Height="50" Width="50"/>
+                        </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDefaulted" Value="true">
+                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    
+    
     
 </ResourceDictionary>

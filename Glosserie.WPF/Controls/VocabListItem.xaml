@@ -22,8 +22,8 @@
                    FontFamily="{StaticResource MontserratSemiBold}"
                    Foreground="{StaticResource RussianVioletBrush}"
                    TextTrimming="CharacterEllipsis"
-                   MaxWidth="200"
-                   MinWidth="200"
+                   MaxWidth="250"
+                   MinWidth="250"
                    HorizontalAlignment="Left"/>
     </Grid>
 </UserControl>

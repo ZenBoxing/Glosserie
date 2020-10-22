@@ -14,6 +14,7 @@
     <None Remove="Images\BookShelf4.png" />
     <None Remove="Images\BookShelfLG.png" />
     <None Remove="Images\BookShelfMain.png" />
+    <None Remove="Images\Create.png" />
     <None Remove="Images\Delete.png" />
     <None Remove="Images\Edit.png" />
     <None Remove="Images\LibraryBooks1.png" />
@@ -46,6 +47,7 @@
     <Resource Include="Fonts\Montserrat-Light.otf" />
     <Resource Include="Fonts\Montserrat-Regular.otf" />
     <Resource Include="Fonts\Montserrat-SemiBold.otf" />
+    <Resource Include="Images\Create.png" />
     <Resource Include="Images\Delete.png" />
     <Resource Include="Images\Edit.png" />
     <Resource Include="Images\LibraryBooks1.png" />

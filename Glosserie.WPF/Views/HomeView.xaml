@@ -17,14 +17,20 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
     
-    <Grid>
+    <Grid Background="{StaticResource MidnightBlueBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
         <Grid
             Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
             MinHeight="100"
             Background="{StaticResource RussianVioletBrush}">
             <Grid.ColumnDefinitions>
@@ -33,13 +39,30 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-            <Button Style="{StaticResource OpenButton}" Grid.Column="1"/>
-            <Button Style="{StaticResource EditButton}" Grid.Column="2"/>
-            <Button Style="{StaticResource DeleteButton}" Grid.Column="3"/>
+            <Button Style="{StaticResource OpenButton}" Grid.Column="1"  VerticalAlignment="Center" Margin="10 0"/>
+            <Button Style="{StaticResource EditButton}" Grid.Column="2" VerticalAlignment="Center" Margin="10 0"/>
+            <Button Style="{StaticResource DeleteButton}" Grid.Column="3" VerticalAlignment="Center" Margin="10 0"/>
         </Grid>
-        <controls:VocabListItemControl Grid.Row="1"/>
+        <controls:VocabListItemControl Grid.Row="1" 
+                                       Grid.Column="0"
+                                        MinWidth="305"
+                                        MaxWidth="305"
+                                        Height="300"
+                                        Margin="15 0 0 0"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"/>
+        <Button Style="{StaticResource CreateButton}"
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="0 0 25 25"
+                Width="75"
+                Height="75"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"/>
         <StackPanel
             Grid.Row="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
             MinHeight="50"
             Background="{StaticResource RussianVioletBrush}"></StackPanel>
         
