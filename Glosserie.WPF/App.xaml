@@ -20,6 +20,10 @@
                 <views:HomeView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewModels:CreateViewModel}">
+                <views:CreateView/>
+            </DataTemplate>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

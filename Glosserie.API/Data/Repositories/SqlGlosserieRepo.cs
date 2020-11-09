@@ -1,5 +1,8 @@
 ﻿using Glosserie.API.Data.DataAccess;
 using Glosserie.API.Models;
+using Glosserie.API.Utility;
+using Syncfusion.Pdf;
+using Syncfusion.Pdf.Parsing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,8 +20,20 @@ namespace Glosserie.API.Data.Repositories
         }
 
 
-        public void CreateVocabList(List<EntryModel> wordList)
+        public void CreateVocabList(VocabListOptionsModel options)
         {
+            PdfLoadedDocument pdf = new PdfLoadedDocument(options.FileContents);
+            //change to stringbuilder possibly
+            string extractedText = "";
+
+            foreach (PdfPageBase item in pdf.Pages)
+            {
+                extractedText += item.ExtractText();
+            }
+
+            string[] wordArray = TextHandler.GetSeparatedWordArray(extractedText);
+
+
             throw new NotImplementedException();
         }
 

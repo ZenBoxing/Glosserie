@@ -14,6 +14,6 @@ namespace Glosserie.API.Data
         IEnumerable<EntryModel> GetEntriesByList(int vocabListId);
         IEnumerable<EntryModel> GetAllEntries();
         UserModel getUser(int userId);
-        void CreateVocabList(List<EntryModel> wordList);
+        void CreateVocabList(VocabListOptionsModel options);
     }
 }
