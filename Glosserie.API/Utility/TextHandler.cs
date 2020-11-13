@@ -23,10 +23,19 @@ namespace Glosserie.API.Utility
 
             //Replaces non-letter characters with space
             string lettersOnlyText = wordRegex.Replace(sampleText, " ");
-            //Splits sample text into array
-            string[] separatedWordArray = lettersOnlyText.Split(wordSeparators, StringSplitOptions.RemoveEmptyEntries);
-            string[] uniqueWordArray = new HashSet<string>(separatedWordArray).ToArray();
-            return uniqueWordArray;
+            //Splits sample text into Hash set
+            HashSet<string> uniqueWordSet = new HashSet<string>(lettersOnlyText.Split(wordSeparators, StringSplitOptions.RemoveEmptyEntries));
+
+            //removes single letter words from set
+            foreach (var word in uniqueWordSet)
+            {
+                if (word.Length <= 1)
+                {
+                    uniqueWordSet.Remove(word);
+                }
+            }
+
+            return uniqueWordSet.ToArray();
         }
     }
 }

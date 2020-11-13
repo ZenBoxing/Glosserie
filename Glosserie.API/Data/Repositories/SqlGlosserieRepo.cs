@@ -33,6 +33,15 @@ namespace Glosserie.API.Data.Repositories
 
             string[] wordArray = TextHandler.GetSeparatedWordArray(extractedText);
 
+            List<EntryModel> entries = new List<EntryModel>();
+
+            //perhaps use table-value parameter
+            foreach (var word in wordArray)
+            {
+                var record = _sqlDataAccess.LoadData<EntryModel, dynamic>
+                    ("ListeraDB.listeradb.spGetEntryByWord", new { word = word }, "GlosserieSSAuth");
+            }
+
 
             throw new NotImplementedException();
         }
