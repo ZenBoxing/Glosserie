@@ -12,6 +12,5 @@ namespace Glosserie.API.Models
         public string Word { get; set; }
         public string WordType { get; set; }
         public string Definition { get; set; }
-
     }
 }

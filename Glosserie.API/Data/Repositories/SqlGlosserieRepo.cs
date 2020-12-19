@@ -22,6 +22,17 @@ namespace Glosserie.API.Data.Repositories
 
         public void CreateVocabList(VocabListOptionsModel options)
         {
+            //potential options would be number of words and frequency of words
+            
+            //create VocabListModel
+            VocabListModel vocabListModel = new VocabListModel { ListName = options.ListName,
+                                                                 UserId = options.UserId};
+            //check if listname already exists for this user
+
+            //save VocabListModel to database (look into sql transactions)
+            _sqlDataAccess.SaveData<VocabListModel>("spInsertVocabList", vocabListModel, "GlosserieSSAuth");
+
+
             PdfLoadedDocument pdf = new PdfLoadedDocument(options.FileContents);
             //change to stringbuilder possibly
             string extractedText = "";
@@ -34,16 +45,29 @@ namespace Glosserie.API.Data.Repositories
             string[] wordArray = TextHandler.GetSeparatedWordArray(extractedText);
 
             List<EntryModel> entries = new List<EntryModel>();
-
-            //perhaps use table-value parameter
+            
             foreach (var word in wordArray)
             {
-                var record = _sqlDataAccess.LoadData<EntryModel, dynamic>
-                    ("ListeraDB.listeradb.spGetEntryByWord", new { word = word }, "GlosserieSSAuth");
+                entries.Add(new EntryModel { Word = word});
             }
 
+            //perhaps use table-value parameter
+            //foreach (var word in wordArray)
+            //{
+            //    var record = _sqlDataAccess.LoadData<EntryModel, dynamic>
+            //        ("ListeraDB.listeradb.spGetEntryByWord", new { word = word }, "GlosserieSSAuth");
+            //}
 
-            throw new NotImplementedException();
+            //could possibly use sp that takes dif TVP 
+            var records = _sqlDataAccess.LoadData<EntryModel, dynamic>
+                    ("ListeraDB.listeradb.spGetEntriesByWordList", new { ETT = entries }, "GlosserieSSAuth");
+
+            //get vocablist with ID
+            var vocabListWithID = _sqlDataAccess.LoadData<VocabListModel, dynamic>
+                ("ListeraDB.listeradb.spGetVocabListByName", new { listname = vocabListModel.ListName }, "GlosserieSSAuth");
+
+
+
         }
 
         public IEnumerable<EntryModel> GetAllEntries()
