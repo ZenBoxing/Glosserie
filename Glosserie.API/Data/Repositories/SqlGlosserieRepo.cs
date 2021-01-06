@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Glosserie.API.Data.Repositories
 {
-    public class SqlGlosserieRepo : IGlosserieRepo
+    public class SqlGlosserieRepo //: IGlosserieRepo
     {
         private readonly ISqlDataAccess _sqlDataAccess;
 
@@ -41,7 +41,8 @@ namespace Glosserie.API.Data.Repositories
             {
                 extractedText += item.ExtractText();
             }
-
+            
+            //todo: get texthandler through constructor 
             string[] wordArray = TextHandler.GetSeparatedWordArray(extractedText);
 
             List<EntryModel> entries = new List<EntryModel>();
@@ -67,6 +68,16 @@ namespace Glosserie.API.Data.Repositories
                 ("ListeraDB.listeradb.spGetVocabListByName", new { listname = vocabListModel.ListName }, "GlosserieSSAuth");
 
 
+            //add dictionary entries to list entries
+            List<ListEntryModel> listEntryModels = new List<ListEntryModel>();
+            int listID = vocabListWithID.First().ListId;
+
+            foreach (var entry in records)
+            {
+                listEntryModels.Add(new ListEntryModel { ListID = listID , EntryID = entry.EntryID});
+            }
+            //insert list entries
+            _sqlDataAccess.SaveData<List<ListEntryModel>>("spInsertListEntries", listEntryModels, "GlosserieSSAuth");
 
         }
 

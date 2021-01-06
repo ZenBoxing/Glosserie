@@ -30,7 +30,9 @@ namespace Glosserie.API
         {
             services.AddControllers();
 
-            services.AddScoped<IGlosserieRepo, SqlGlosserieRepo>();
+            services.AddSwaggerGen();
+
+            services.AddScoped<IGlosserieRepo, MockGLosserieRep>();
             services.AddScoped<ISqlDataAccess, SqlDataAccess>();
         }
 
@@ -43,6 +45,13 @@ namespace Glosserie.API
             }
 
             app.UseHttpsRedirection();
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI( c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json","Glosserie API");
+            });
 
             app.UseRouting();
 

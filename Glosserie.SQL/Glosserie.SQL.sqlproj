@@ -139,7 +139,7 @@
     <Build Include="listeradb\Stored Procedures\spGetUserByID.sql" />
     <Build Include="listeradb\Stored Procedures\spGetAllEntries.sql" />
     <Build Include="listeradb\Stored Procedures\spInsertVocabList.sql" />
-    <Build Include="listeradb\Stored Procedures\spInsertListEntries.sql" />
+    <Build Include="listeradb\Stored Procedures\spInsertListEntry.sql" />
     <Build Include="listeradb\Stored Procedures\spGetVocabLists.sql" />
     <Build Include="listeradb\Stored Procedures\spGetEntryByWord.sql" />
   </ItemGroup>

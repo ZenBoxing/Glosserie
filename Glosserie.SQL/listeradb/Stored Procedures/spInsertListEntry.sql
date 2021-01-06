@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[spInsertListEntries]
+﻿CREATE PROCEDURE [listeradb].[spInsertListEntry]
 	@listID int,
 	@entryID int
 AS

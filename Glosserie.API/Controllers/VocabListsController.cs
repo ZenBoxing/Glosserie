@@ -43,13 +43,26 @@ namespace Glosserie.API.Controllers
             return Ok(vocabList);
         }
 
+        //[HttpPost]
+        //public void PostVocabList(VocabListOptionsModel options)
+        //{
+        //    _repo.CreateVocabList(options);
+        //    //return response at some point
+        //}
         [HttpPost]
-        public void PostVocabList(VocabListOptionsModel options)
+        public IActionResult PostVocabList(int test)
         {
-            _repo.CreateVocabList(options);
-            //return response at some point
+            int dummy = test;
+            bool success = _repo.CreateVocabList();
+            if (success == false)
+            {
+                return BadRequest("false");
+            }
+            else 
+            {
+                return Ok();
+            }
         }
-
 
     }
 }

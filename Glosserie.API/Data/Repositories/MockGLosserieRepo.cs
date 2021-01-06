@@ -1,4 +1,8 @@
-﻿using Glosserie.API.Models;
+﻿using Glosserie.API.Data.DataAccess;
+using Glosserie.API.Models;
+using Glosserie.API.Utility;
+using Syncfusion.Pdf;
+using Syncfusion.Pdf.Parsing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,8 +10,46 @@ using System.Threading.Tasks;
 
 namespace Glosserie.API.Data
 {
-    public class MockGLosserieRep
+    public class MockGLosserieRep : IGlosserieRepo
     {
+        private readonly ISqlDataAccess _sqlDataAccess;
+
+        public MockGLosserieRep(ISqlDataAccess sqlDataAccess)
+        {
+            _sqlDataAccess = sqlDataAccess;
+        }
+
+        public bool CreateVocabList()
+        {
+            bool success = false;
+            //create VocabListModel
+            VocabListInsertModel vocabListInsertModel = new VocabListInsertModel
+            {
+                ListName = "TestData",
+                UserId = 1
+            };
+            //check if listname already exists for this user
+
+            try
+            {
+                _sqlDataAccess.SaveData<VocabListInsertModel>("ListeraDB.listeradb.spInsertVocabList", vocabListInsertModel, "GlosserieSSAuth");
+                success = true;
+            }
+            catch (Exception ex)
+            {
+                string message = ex.Message;
+                string trace = ex.StackTrace;
+            }
+
+            return success;
+
+        }
+
+        public void CreateVocabList(VocabListOptionsModel options)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<EntryModel> GetAllEntries()
         {
             throw new NotImplementedException();
