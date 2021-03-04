@@ -1,6 +1,6 @@
 ﻿
 CREATE PROCEDURE [listeradb].[spGetEntryByWord]
-	@word varchar
+	@word varchar(50)
 AS
 begin
 	set nocount on;

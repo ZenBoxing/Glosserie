@@ -1,0 +1,47 @@
+﻿public bool addPluralNouns()
+        {
+            bool success = true;
+
+            try
+            {
+                var records = _sqlDataAccess.LoadData<EntryModel, dynamic>
+                                ("ListeraDB.listeradb.spGetAllNouns", new { }, "GlosserieSSAuth");
+
+                foreach (var record in records)
+                {
+                    if (record.Word.EndsWith("y"))
+                    {
+                        EntryInsertModel entryInsertModel = new EntryInsertModel
+                        {
+                            Word = record.Word.Substring(0, record.Word.Length - 1) + "ies",
+                            WordType = record.WordType,
+                            WordRank = record.WordRank,
+                            Definition = record.Definition
+                        };
+                        _sqlDataAccess.SaveData<EntryInsertModel>("ListeraDB.listeradb.spInsertEntry", entryInsertModel, "GlosserieSSAuth");
+
+                    }
+
+                    if (!record.Word.EndsWith("y") || !record.Word.EndsWith("s"))
+                    {
+                        EntryInsertModel entryInsertModel = new EntryInsertModel
+                        {
+                            Word = record.Word + "s",
+                            WordType = record.WordType,
+                            WordRank = record.WordRank,
+                            Definition = record.Definition
+                        };
+                        _sqlDataAccess.SaveData<EntryInsertModel>("ListeraDB.listeradb.spInsertEntry", entryInsertModel, "GlosserieSSAuth");
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                string message = ex.Message;
+                string stacktrace = ex.StackTrace;
+                success = false;
+            }
+
+            return success;
+        }

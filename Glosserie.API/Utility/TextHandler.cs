@@ -16,26 +16,38 @@ namespace Glosserie.API.Utility
         /// <returns>String Array</returns>
         public static string[] GetSeparatedWordArray(string sampleText)
         {
+            
+ 
             //matches all non-letter characters
             Regex wordRegex = new Regex("[^a-zA-Z]");
 
             char[] wordSeparators = { ' ' };
 
             //Replaces non-letter characters with space
-            string lettersOnlyText = wordRegex.Replace(sampleText, " ");
-            //Splits sample text into Hash set
-            HashSet<string> uniqueWordSet = new HashSet<string>(lettersOnlyText.Split(wordSeparators, StringSplitOptions.RemoveEmptyEntries));
+            string lettersOnlyText = wordRegex.Replace(sampleText.ToLower(), " ");
 
-            //removes single letter words from set
-            foreach (var word in uniqueWordSet)
+            //create list of words 
+            List<string> uniqueWordList = new List<string>(lettersOnlyText.Split(wordSeparators, StringSplitOptions.RemoveEmptyEntries));
+            //sort list
+            uniqueWordList.Sort();
+
+            //find duplicate elements and small words in list
+            for (int i = 0; i < uniqueWordList.Count; i++)
             {
-                if (word.Length <= 1)
+                if (uniqueWordList[i].Length < 3)
+                { 
+                    uniqueWordList[i] = " ";
+                }
+
+                if (i + 1 < uniqueWordList.Count && uniqueWordList[i] == uniqueWordList[i + 1] )
                 {
-                    uniqueWordSet.Remove(word);
+                    uniqueWordList[i] = " ";
                 }
             }
+            //remove duplicate elements and small words from list
+            uniqueWordList.RemoveAll(x => x == " ");
 
-            return uniqueWordSet.ToArray();
+            return uniqueWordList.ToArray();
         }
     }
 }

@@ -5,6 +5,7 @@ using Syncfusion.Pdf;
 using Syncfusion.Pdf.Parsing;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -21,29 +22,86 @@ namespace Glosserie.API.Data
 
         public bool CreateVocabList()
         {
+            string path = "C:/Users/jarre/GlosserieApp/Glosserie/Glosserie.API/TestPDFs/Test_Sample.pdf";
             bool success = false;
+            bool status = File.Exists(path);
             //create VocabListModel
-            VocabListInsertModel vocabListInsertModel = new VocabListInsertModel
-            {
-                ListName = "TestData",
-                UserId = 1
-            };
+            //VocabListInsertModel vocabListInsertModel = new VocabListInsertModel
+            //{
+            //    ListName = "TestData",
+            //    UserId = 1
+            //};
             //check if listname already exists for this user
 
-            try
+            //perhaps use stringbuilder
+            string ExtractedText = "";
+
+
+            if (status)
             {
-                _sqlDataAccess.SaveData<VocabListInsertModel>("ListeraDB.listeradb.spInsertVocabList", vocabListInsertModel, "GlosserieSSAuth");
-                success = true;
-            }
-            catch (Exception ex)
-            {
-                string message = ex.Message;
-                string trace = ex.StackTrace;
+
+                try
+                {
+                    byte[] content = File.ReadAllBytes(path);
+                    PdfLoadedDocument pdf = new PdfLoadedDocument(content);
+
+                    foreach  (PdfPageBase page in pdf.Pages)
+                    {
+                        ExtractedText += page.ExtractText();
+                    }
+
+                    string[] wordArray = TextHandler.GetSeparatedWordArray(ExtractedText);
+
+                    //create entry models from word list
+                    List<EntryModel> entries = new List<EntryModel>();
+
+                    foreach (var word in wordArray)
+                    {
+                        entries.Add(new EntryModel { Word = word });
+                    }
+
+                    //get entryID from database for each entrymodel
+                    foreach (var entry in entries)
+                    {
+                        var records = _sqlDataAccess.LoadData<EntryModel, dynamic>
+                        ("ListeraDB.listeradb.spGetEntryByWord", new { word = entry.Word }, "GlosserieSSAuth");
+
+                        
+                        if (records.Count > 0)
+                        {
+                            var record = records.Find(x => x.Word.ToLower() == entry.Word);
+                            if (record.EntryID != 0)
+                            {
+                                entry.EntryID = record.EntryID;
+                                entry.WordRank = record.WordRank;
+                            }                      
+                        }
+                    }
+
+                    //remove entries not found in dictionary
+                    entries.RemoveAll(x => x.EntryID == 0);
+                    //get 25 least common words by wordrank
+                    List<EntryModel> sortedEntries = entries.OrderBy(x => x.WordRank).ToList();
+                   
+                    if (sortedEntries.Count > 25)
+                    {
+                        sortedEntries.RemoveRange(25, sortedEntries.Count - 25); 
+                    }
+
+                    success = true;
+                }
+                catch (Exception ex)
+                {
+                    string message = ex.Message;
+                    string trace = ex.StackTrace;
+                } 
             }
 
             return success;
 
         }
+
+        
 
         public void CreateVocabList(VocabListOptionsModel options)
         {

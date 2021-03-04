@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace Glosserie.API.Models
 {
-    public class EntryModel
+    public class EntryInsertModel
     {
-        public int EntryID { get; set; }
         public long WordRank { get; set; }
         public string Word { get; set; }
         public string WordType { get; set; }
