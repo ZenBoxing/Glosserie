@@ -88,6 +88,21 @@ namespace Glosserie.API.Data
                         sortedEntries.RemoveRange(25, sortedEntries.Count - 25); 
                     }
 
+                    //get listid from database
+                    var listFromDB = _sqlDataAccess.LoadData<VocabListModel, dynamic>
+                        ("ListeraDB.listeradb.spGetListByListName", new { listname = "TestData", userID = 1 }, "GlosserieSSAuth");
+
+
+
+                    //save sorted entries to database as list entries
+                    foreach (var entry in sortedEntries)
+                    {
+                        _sqlDataAccess.SaveData<ListEntryModel>("ListeraDB.listeradb.spInsertListEntry", 
+                            new ListEntryModel {ListID = listFromDB[0].ListId, EntryID = entry.EntryID }, "GlosserieSSAuth");
+                    }
+
+
+
                     success = true;
                 }
                 catch (Exception ex)
