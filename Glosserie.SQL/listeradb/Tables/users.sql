@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [listeradb].[users] (
     [userID]   BIGINT        IDENTITY (1, 1) NOT NULL,
     [email]    NVARCHAR (75) NOT NULL,
-    [password] NVARCHAR (25) NOT NULL,
+    [password] NVARCHAR (100) NOT NULL,
     CONSTRAINT [PK_users_userID] PRIMARY KEY CLUSTERED ([userID] ASC),
     CONSTRAINT [users$email] UNIQUE NONCLUSTERED ([email] ASC)
 );

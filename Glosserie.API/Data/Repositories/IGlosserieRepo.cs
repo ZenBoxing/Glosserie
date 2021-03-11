@@ -13,7 +13,6 @@ namespace Glosserie.API.Data
         IEnumerable<VocabListModel> GetVocabListsById(int listId);
         IEnumerable<EntryModel> GetEntriesByList(int vocabListId);
         IEnumerable<EntryModel> GetAllEntries();
-        UserModel getUser(int userId);
         void CreateVocabList(VocabListOptionsModel options);
         bool CreateVocabList(); // remove parameterless method after testing
     }
