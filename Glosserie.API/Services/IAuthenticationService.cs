@@ -8,7 +8,7 @@ namespace Glosserie.API.Services
 {
     public interface IAuthenticationService
     {
-        Task<bool> Register(string email, string password, string confirmpassword);
-        Task<UserModel> Login(string email, string password);
+        bool Register(string email, string password, string confirmpassword);
+        UserModel Login(string email, string password);
     }
 }

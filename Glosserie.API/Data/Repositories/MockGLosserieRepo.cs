@@ -1,5 +1,6 @@
 ﻿using Glosserie.API.Data.DataAccess;
 using Glosserie.API.Models;
+using Glosserie.API.Services;
 using Glosserie.API.Utility;
 using Syncfusion.Pdf;
 using Syncfusion.Pdf.Parsing;
@@ -14,10 +15,12 @@ namespace Glosserie.API.Data
     public class MockGLosserieRep : IGlosserieRepo
     {
         private readonly ISqlDataAccess _sqlDataAccess;
+        private readonly IAuthenticationService _authenticationService;
 
-        public MockGLosserieRep(ISqlDataAccess sqlDataAccess)
+        public MockGLosserieRep(ISqlDataAccess sqlDataAccess, IAuthenticationService authenticationService)
         {
             _sqlDataAccess = sqlDataAccess;
+            _authenticationService = authenticationService;
         }
 
         public bool CreateVocabList()
@@ -100,9 +103,6 @@ namespace Glosserie.API.Data
                         _sqlDataAccess.SaveData<ListEntryModel>("ListeraDB.listeradb.spInsertListEntry", 
                             new ListEntryModel {ListID = listFromDB[0].ListId, EntryID = entry.EntryID }, "GlosserieSSAuth");
                     }
-
-
-
                     success = true;
                 }
                 catch (Exception ex)
@@ -190,6 +190,16 @@ namespace Glosserie.API.Data
             };
 
             return vocabLists;
+        }
+
+        public UserModel Login(string email, string password)
+        {
+            return _authenticationService.Login(email, password);
+        }
+
+        public bool Register(string email, string password, string confirmpassword)
+        {
+            return _authenticationService.Register(email,password,confirmpassword);
         }
     }
 }

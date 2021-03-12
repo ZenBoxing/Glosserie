@@ -11,7 +11,7 @@ namespace Glosserie.API.Services
     public class AuthenticationService : IAuthenticationService
     {
         private readonly ISqlDataAccess _sqlDataAccess;
-        private readonly IPasswordHasher _passwordHasher; //add to DI
+        private readonly IPasswordHasher _passwordHasher; 
 
         public AuthenticationService(ISqlDataAccess sqlDataAccess, IPasswordHasher passwordHasher)
         {
@@ -19,8 +19,8 @@ namespace Glosserie.API.Services
             _passwordHasher = passwordHasher;
         }
 
-        //remove async
-        public async Task<bool> Register(string email, string password, string confirmpassword)
+        
+        public bool Register(string email, string password, string confirmpassword)
         {
             bool success = false;
             if (password == confirmpassword)
@@ -56,8 +56,8 @@ namespace Glosserie.API.Services
 
             return success;
         }
-        //remove async
-        public async Task<UserModel> Login(string email, string password)
+        
+        public UserModel Login(string email, string password)
         {
             try
             {
@@ -78,7 +78,7 @@ namespace Glosserie.API.Services
                         return user;
                     }
                 }
-                return new UserModel() {Email = "UserAlreadyExists" };
+                return new UserModel() {Email = "UserDoesNotExist" };
             }
             catch (Exception ex)
             {

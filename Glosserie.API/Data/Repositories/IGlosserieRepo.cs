@@ -15,5 +15,7 @@ namespace Glosserie.API.Data
         IEnumerable<EntryModel> GetAllEntries();
         void CreateVocabList(VocabListOptionsModel options);
         bool CreateVocabList(); // remove parameterless method after testing
+        UserModel Login(string email,string password);
+        bool Register(string email,string password,string confirmpassword);
     }
 }

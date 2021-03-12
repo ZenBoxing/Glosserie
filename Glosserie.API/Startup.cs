@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Glosserie.API.Data;
 using Glosserie.API.Data.DataAccess;
 using Glosserie.API.Data.Repositories;
+using Glosserie.API.Services;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -34,6 +36,8 @@ namespace Glosserie.API
 
             services.AddScoped<IGlosserieRepo, MockGLosserieRep>();
             services.AddScoped<ISqlDataAccess, SqlDataAccess>();
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
+            services.AddScoped<IPasswordHasher, PasswordHasher>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
