@@ -36,9 +36,9 @@ namespace Glosserie.API.Services
                 };
                 //check if email already exists in database
                 var records = _sqlDataAccess.LoadData<UserModel, dynamic>
-                    ("ListeraDB.listerdb.spGetUserByEmail", new { email = userInsertModel.Email}, "GlosserieSSAuth");
+                    ("ListeraDB.listeradb.spGetUserByEmail", new { email = userInsertModel.Email}, "GlosserieSSAuth");
 
-                if (records == null)
+                if (records.Count == 0)
                 {
                     try
                     {
@@ -62,9 +62,9 @@ namespace Glosserie.API.Services
             try
             {
                 var records = _sqlDataAccess.LoadData<UserModel, dynamic>
-                           ("ListeraDB.listerdb.spGetUserByEmail", new { email = email }, "GlosserieSSAuth");
+                           ("ListeraDB.listeradb.spGetUserByEmail", new { email = email }, "GlosserieSSAuth");
 
-                if (records != null)
+                if (records.Count > 0)
                 {
                     PasswordVerificationResult result = _passwordHasher.VerifyHashedPassword(records[0].Password, password);
                     if (result == PasswordVerificationResult.Success)
