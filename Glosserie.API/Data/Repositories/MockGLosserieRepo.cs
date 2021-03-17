@@ -123,6 +123,37 @@ namespace Glosserie.API.Data
             throw new NotImplementedException();
         }
 
+        public bool DeleteList(int listID)
+        {
+            //delete list entries for list
+            try
+            {
+                _sqlDataAccess.DeleteData
+                        ("ListeraDB.listeradb.spDeleteListEntries", new { listID = listID }, "GlosserieSSAuth");
+
+            }
+            catch (Exception ex)
+            {
+                string m = ex.Message;
+                string s = ex.StackTrace;
+                return false;
+            }
+            //delete vocablist
+            try
+            {
+                _sqlDataAccess.DeleteData
+                        ("ListeraDB.listeradb.spDeleteVocabList", new { listID = listID }, "GlosserieSSAuth");
+
+            }
+            catch (Exception ex)
+            {
+                string m = ex.Message;
+                string s = ex.StackTrace;
+                return false;
+            }
+            return true;
+        }
+
         public IEnumerable<EntryModel> GetAllEntries()
         {
             throw new NotImplementedException();

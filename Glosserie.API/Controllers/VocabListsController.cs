@@ -73,5 +73,20 @@ namespace Glosserie.API.Controllers
             }
         }
 
+        [HttpDelete]
+        public IActionResult DeleteVocabList(int listID)
+        {
+            bool success = _repo.DeleteList(listID);
+            if (success == false)
+            {
+                return BadRequest("failed");
+            }
+            else 
+            {
+                return Ok();
+            }
+        }
+
+
     }
 }
