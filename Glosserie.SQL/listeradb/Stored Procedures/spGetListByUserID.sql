@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [listeradb].[spGetListByUserID]
+﻿CREATE PROCEDURE [listeradb].[spGetListsByUserID]
 	@UserID int
 AS
 begin

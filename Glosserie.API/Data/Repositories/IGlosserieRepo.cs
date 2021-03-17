@@ -11,7 +11,7 @@ namespace Glosserie.API.Data
         IEnumerable<VocabListModel> GetVocabLists();
         IEnumerable<VocabListModel> GetVocabListsByUser(int userId);
         IEnumerable<VocabListModel> GetVocabListsById(int listId);
-        IEnumerable<EntryModel> GetEntriesByList(int vocabListId);
+        IEnumerable<EntryModel> GetEntriesByList(int userId, string listname);
         IEnumerable<EntryModel> GetAllEntries();
         void CreateVocabList(VocabListOptionsModel options);
         bool CreateVocabList(); // remove parameterless method after testing

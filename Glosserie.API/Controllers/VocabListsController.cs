@@ -43,6 +43,15 @@ namespace Glosserie.API.Controllers
             return Ok(vocabList);
         }
 
+        [HttpGet("listentries")]
+        public ActionResult<IEnumerable<EntryModel>> GetEntriesByList(int userID, string listname)
+        {
+            var listEntries = _repo.GetEntriesByList(userID, listname);
+
+            return Ok(listEntries);
+        }
+
+
         //[HttpPost]
         //public void PostVocabList(VocabListOptionsModel options)
         //{

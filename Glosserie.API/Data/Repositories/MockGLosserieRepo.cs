@@ -128,12 +128,31 @@ namespace Glosserie.API.Data
             throw new NotImplementedException();
         }
 
-        public IEnumerable<EntryModel> GetEntriesByList(int vocabListId)
+        public IEnumerable<EntryModel> GetEntriesByList(int userid, string listname)
         {
-            throw new NotImplementedException();
+            try
+            {
+                //get listid from database
+                var vocabList = _sqlDataAccess.LoadData<VocabListModel, dynamic>
+                    ("ListeraDB.listeradb.spGetListByName", new { UserId = userid, ListName = listname }, "GlosserieSSAuth");
+
+                //use listId to get list entries
+                var records = _sqlDataAccess.LoadData<EntryModel, dynamic>
+                    ("ListeraDB.listeradb.spGetEntriesByList", new { listID = vocabList[0].ListId }, "GlosserieSSAuth");
+                
+                return records;
+
+            }
+            catch (Exception ex)
+            {
+                string m = ex.Message;
+                string s = ex.StackTrace;
+                return new List<EntryModel>();
+            }
+
         }
 
-
+        //remove
         public UserModel getUser(int userId)
         {
             return new UserModel { UserID = 0, Email = "email@email.com", Password = "password" };

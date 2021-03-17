@@ -143,6 +143,9 @@
     <Build Include="listeradb\Stored Procedures\spGetVocabLists.sql" />
     <Build Include="listeradb\Stored Procedures\spGetEntryByWord.sql" />
     <Build Include="listeradb\Stored Procedures\spGetAllNouns.sql" />
+    <Build Include="listeradb\Stored Procedures\spInsertUser.sql" />
+    <Build Include="listeradb\Stored Procedures\spGetUserByEmail.sql" />
+    <Build Include="listeradb\Stored Procedures\spGetListByName.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Publish Locations\Glosserie.SQL.publish.xml" />
