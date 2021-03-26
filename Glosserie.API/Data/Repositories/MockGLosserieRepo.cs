@@ -154,10 +154,6 @@ namespace Glosserie.API.Data
             return true;
         }
 
-        public IEnumerable<EntryModel> GetAllEntries()
-        {
-            throw new NotImplementedException();
-        }
 
         public IEnumerable<EntryModel> GetEntriesByList(int userid, string listname)
         {

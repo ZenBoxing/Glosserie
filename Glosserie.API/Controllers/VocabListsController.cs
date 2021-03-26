@@ -19,13 +19,13 @@ namespace Glosserie.API.Controllers
             _repo = repo;
         }
 
-        [HttpGet]
-        public ActionResult<IEnumerable<VocabListModel>> GetAllVocabLists()
-        {
-            var vocabLists = _repo.GetVocabLists();
+        //[HttpGet]
+        //public ActionResult<IEnumerable<VocabListModel>> GetAllVocabLists()
+        //{
+        //    var vocabLists = _repo.GetVocabLists();
 
-            return Ok(vocabLists);
-        }
+        //    return Ok(vocabLists);
+        //}
 
         //[HttpGet("{listID}")]
         //public ActionResult<IEnumerable<VocabListModel>> GetVocabListsById(int listID)
