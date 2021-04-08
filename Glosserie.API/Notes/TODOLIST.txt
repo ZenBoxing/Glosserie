@@ -1,0 +1,8 @@
+﻿TODO and suggestions:
+- make separate methods for login and getuser in user controller
+- return registration result from postuser
+- move authentication service to different project
+- change email field for userId 1
+- exception handling for authentication service in wpf library
+- email validation 
+- add authentication service and authenticator to service provider in WPF project

@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Glosserie.API.Data
 {
-    public class MockGLosserieRep : IGlosserieRepo
+    public class MockGLosserieRep //:  IGlosserieRepo
     {
         private readonly ISqlDataAccess _sqlDataAccess;
         private readonly IAuthenticationService _authenticationService;

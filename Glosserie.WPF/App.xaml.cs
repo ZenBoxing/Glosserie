@@ -1,4 +1,6 @@
-﻿using Glosserie.WPF.Library.Services;
+﻿using Glosserie.WPF.Library.Models;
+using Glosserie.WPF.Library.Services;
+using Glosserie.WPF.Library.State.Authenticators;
 using Glosserie.WPF.ViewModels;
 using Glosserie.WPF.ViewModels.Factories;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,8 +19,14 @@ namespace Glosserie.WPF
     /// </summary>
     public partial class App : Application
     {
-        protected override void OnStartup(StartupEventArgs e)
+        protected override async void OnStartup(StartupEventArgs e)
         {
+            Authenticator authenticator = new Authenticator(new AuthenticationService());
+            bool success = await authenticator.Register(new RegistrationModel 
+            { Email = "someemail@email.com",
+              Password = "password",
+              ConfirmPassword = "password"});
+
             IServiceProvider serviceProvider = CreateServiceProvider();
             Window window = serviceProvider.GetRequiredService<MainWindow>();
             window.Show();

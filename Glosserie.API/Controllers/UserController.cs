@@ -32,11 +32,12 @@ namespace Glosserie.API.Controllers
                 return Ok(user);
             }
         }
-
+        //maybe return registration result  
         [HttpPost]
-        public ActionResult<bool> PostUser(string email, string password,string confirmpassword)
+        public ActionResult<bool> PostUser(RegistrationModel info)
         {
-            var success = _repo.Register(email,password,confirmpassword);
+            
+            var success = _repo.Register(info.Email, info.Password, info.ConfirmPassword);
             if (success == false)
             {
                 return BadRequest();

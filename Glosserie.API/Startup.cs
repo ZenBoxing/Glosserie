@@ -34,7 +34,7 @@ namespace Glosserie.API
 
             services.AddSwaggerGen();
 
-            services.AddScoped<IGlosserieRepo, MockGLosserieRep>();
+            services.AddScoped<IGlosserieRepo, SqlGlosserieRepo>();
             services.AddScoped<ISqlDataAccess, SqlDataAccess>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IPasswordHasher, PasswordHasher>();

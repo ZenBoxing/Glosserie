@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Http.Formatting;
 
 namespace Glosserie.WPF.Library
 {
@@ -20,6 +21,18 @@ namespace Glosserie.WPF.Library
             string jsonResponse = await response.Content.ReadAsStringAsync();
             var records = JsonConvert.DeserializeObject<List<T>>(jsonResponse);
             return records;
+        }
+
+        public async Task<bool> PostAsync<T, U>(string uri, U parameters)
+        {
+            var newUser = parameters;
+            var json = JsonConvert.SerializeObject(newUser);
+            var data = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await PostAsync(uri, data);
+            string jsonResponse = await response.Content.ReadAsStringAsync();
+            var record = JsonConvert.DeserializeObject<bool>(jsonResponse);
+            return record;
         }
 
 
