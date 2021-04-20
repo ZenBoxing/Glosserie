@@ -20,9 +20,9 @@ namespace Glosserie.WPF.Library.State.Authenticators
 
         public bool IsLoggedIn => CurrentUser != null;
 
-        public Task<UserModel> Login(string email, string password)
+        public Task<UserModel> Login(LoginModel info)
         {
-            throw new NotImplementedException();
+            return _authenticationService.Login(info);
         }
 
         public void Logout()

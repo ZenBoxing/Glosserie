@@ -97,6 +97,30 @@
         </Setter>
     </Style>
     
+    <!--Don't hava account button style-->
+    <Style x:Key="RegisterLink" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <TextBlock x:Name="textblock"
+                               FontFamily="{StaticResource MontserratLight}"
+                               Foreground="{StaticResource BabyPowderBrush}"
+                               FontSize="10"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Text="Don't have an account?"></TextBlock>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Foreground" TargetName="textblock" Value="{StaticResource Button.Static.Background}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="FontSize" TargetName="textblock" Value="11"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     
     <!--Edit List Button Style For Home View-->
     <Style x:Key="EditButton" TargetType="{x:Type Button}">

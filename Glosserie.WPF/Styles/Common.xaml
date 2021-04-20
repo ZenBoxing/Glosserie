@@ -4,6 +4,7 @@
     
     <!--Colors-->
     <Color x:Key="RussianViolet">#111344</Color>
+    <Color x:Key="RichBlack">#0F0F0F</Color>
     <Color x:Key="Isabelline">#EFE9E7</Color>
     <Color x:Key="LavenderWeb">#DAE0F2</Color>
     <Color x:Key="MidnightBlue">#181B62</Color>
@@ -15,6 +16,7 @@
     <SolidColorBrush x:Key="LavenderWebBrush" Color="{StaticResource LavenderWeb}"/>
     <SolidColorBrush x:Key="MidnightBlueBrush" Color="{StaticResource MidnightBlue}"/>
     <SolidColorBrush x:Key="BabyPowderBrush" Color="{StaticResource BabyPowder}"/>
+    <SolidColorBrush x:Key="RichBlackBrush" Color="{StaticResource RichBlack}"/>
     
     <!--Fonts-->
     <FontFamily x:Key="MontserratLight">pack://application;,,,/Fonts/#Montserrat Light</FontFamily>   

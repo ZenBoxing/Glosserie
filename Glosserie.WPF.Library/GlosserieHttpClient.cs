@@ -23,7 +23,8 @@ namespace Glosserie.WPF.Library
             return records;
         }
 
-        public async Task<bool> PostAsync<T, U>(string uri, U parameters)
+
+        public async Task<T> PostAsync<T, U>(string uri, U parameters)
         {
             var newUser = parameters;
             var json = JsonConvert.SerializeObject(newUser);
@@ -31,7 +32,7 @@ namespace Glosserie.WPF.Library
 
             var response = await PostAsync(uri, data);
             string jsonResponse = await response.Content.ReadAsStringAsync();
-            var record = JsonConvert.DeserializeObject<bool>(jsonResponse);
+            var record = JsonConvert.DeserializeObject<T>(jsonResponse);
             return record;
         }
 

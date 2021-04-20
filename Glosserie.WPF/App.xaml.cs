@@ -21,11 +21,12 @@ namespace Glosserie.WPF
     {
         protected override async void OnStartup(StartupEventArgs e)
         {
-            Authenticator authenticator = new Authenticator(new AuthenticationService());
-            bool success = await authenticator.Register(new RegistrationModel 
-            { Email = "someemail@email.com",
-              Password = "password",
-              ConfirmPassword = "password"});
+            //Authenticator authenticator = new Authenticator(new AuthenticationService());
+            //UserModel user = await authenticator.Login(new LoginModel
+            //{ 
+            //    Email = "someemail@email.com",
+            //    Password = "Password"
+            //});
 
             IServiceProvider serviceProvider = CreateServiceProvider();
             Window window = serviceProvider.GetRequiredService<MainWindow>();
@@ -42,6 +43,7 @@ namespace Glosserie.WPF
             services.AddSingleton<IViewModelAbstractFactory, ViewModelAbstractFactory>();
             services.AddSingleton<IViewModelFactory<HomeViewModel>, HomeViewModelFactory>();
             services.AddSingleton<IViewModelFactory<VocabListsViewModel>, VocabListsViewModelFactory>();
+            services.AddSingleton<IViewModelFactory<LoginViewModel>, LoginViewModelFactory>();
 
             services.AddScoped<ShellViewModel>();
             services.AddScoped<MainWindow>(s => new MainWindow(s.GetRequiredService<ShellViewModel>()));

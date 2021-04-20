@@ -6,3 +6,7 @@
 - exception handling for authentication service in wpf library
 - email validation 
 - add authentication service and authenticator to service provider in WPF project
+- more secure login method
+- hide sql SS auth password
+- send register request over https
+- revise bindings on regesterlink button

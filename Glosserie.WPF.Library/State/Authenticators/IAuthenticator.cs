@@ -12,7 +12,7 @@ namespace Glosserie.WPF.Library.State.Authenticators
         bool IsLoggedIn { get; }
 
         Task<bool> Register(RegistrationModel info);
-        Task<UserModel> Login(string email, string password);
+        Task<UserModel> Login(LoginModel info);
         void Logout(); 
         
     }

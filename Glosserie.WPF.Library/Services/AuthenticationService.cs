@@ -8,14 +8,15 @@ namespace Glosserie.WPF.Library.Services
 {
     public class AuthenticationService : IAuthenticationService
     {
-        public async Task<UserModel> Login(string email, string password)
+        public async Task<UserModel> Login(LoginModel info)
         {
             using (GlosserieHttpClient client = new GlosserieHttpClient())
             {
-                string uri = "user";
-                var records = await client.GetAsync<UserModel>(uri);
+                string uri = "user/login";
+                //string uri = "user";
+                var record = await client.PostAsync<UserModel, LoginModel>(uri,info);
 
-                return records[0];
+                return record;
             }
         }
 
@@ -23,9 +24,9 @@ namespace Glosserie.WPF.Library.Services
         {
             using (GlosserieHttpClient client = new GlosserieHttpClient())
             {
-                string uri = "user";
+                string uri = "user/register";
                 //try catch
-                var success = await client.PostAsync<bool, dynamic>(uri, info);
+                var success = await client.PostAsync<bool, RegistrationModel>(uri, info);
 
                 return success;
             }

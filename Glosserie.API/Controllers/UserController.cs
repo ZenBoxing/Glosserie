@@ -19,10 +19,10 @@ namespace Glosserie.API.Controllers
             _repo = repo;
         }
 
-        [HttpGet]
-        public ActionResult<UserModel> GetUser(string email, string password)
+        [HttpPost("login")]
+        public ActionResult<UserModel> Login(LoginModel loginModel)
         {
-            var user = _repo.Login(email,password);
+            var user = _repo.Login(loginModel.Email,loginModel.Password);
             if (user.Email == "failed" || user.Email == "UserDoesNotExist")
             {
                 return BadRequest();
@@ -33,8 +33,8 @@ namespace Glosserie.API.Controllers
             }
         }
         //maybe return registration result  
-        [HttpPost]
-        public ActionResult<bool> PostUser(RegistrationModel info)
+        [HttpPost("register")]
+        public ActionResult<bool> Register(RegistrationModel info)
         {
             
             var success = _repo.Register(info.Email, info.Password, info.ConfirmPassword);

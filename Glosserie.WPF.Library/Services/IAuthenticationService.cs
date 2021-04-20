@@ -9,6 +9,6 @@ namespace Glosserie.WPF.Library.Services
     public interface IAuthenticationService
     {
         Task<bool> Register(RegistrationModel info);
-        Task<UserModel> Login(string email, string password);
+        Task<UserModel> Login(LoginModel info);
     }
 }
