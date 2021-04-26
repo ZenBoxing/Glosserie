@@ -9,6 +9,7 @@ namespace Glosserie.WPF.ViewModels
     {
         Home,
         Login,
+        Register,
         VocabLists
     }
 
