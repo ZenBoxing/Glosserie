@@ -20,6 +20,21 @@ namespace Glosserie.WPF.Controls
     {
         private bool _isPasswordChanging;
 
+
+
+        public bool isConfirmPassword
+        {
+            get { return (bool)GetValue(isConfirmPasswordProperty); }
+            set { SetValue(isConfirmPasswordProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for isConfirmPassword.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty isConfirmPasswordProperty =
+            DependencyProperty.Register("isConfirmPassword", typeof(bool), typeof(BindablePasswordBox), 
+                new PropertyMetadata(default(bool)));
+
+
+
         public string Password
         {
             get { return (string)GetValue(PasswordProperty); }

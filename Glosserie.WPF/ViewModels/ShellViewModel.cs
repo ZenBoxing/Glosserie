@@ -20,7 +20,7 @@ namespace Glosserie.WPF.ViewModels
 
 		public ShellViewModel(IViewModelAbstractFactory factory)
 		{
-			ActiveViewModel = factory.CreateViewModel(ViewType.Login);
+			ActiveViewModel = factory.CreateViewModel(ViewType.Register);
 		}
 
 	}
