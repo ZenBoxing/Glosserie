@@ -4,6 +4,7 @@
     <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
     <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
     <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
+    <!--Textbox for email login and register -->
     <Style x:Key="UserNameTextBox" TargetType="{x:Type TextBox}">
         <Setter Property="Background" Value="{StaticResource BabyPowderBrush}"/>
         <Setter Property="BorderBrush" Value="{StaticResource IsabellineBrush}"/>
@@ -47,7 +48,7 @@
                                    >
                             <TextBlock.Style>
                                 <Style TargetType="TextBlock">
-                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Setter Property="Visibility" Value="Hidden"/>
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}" Value="">
                                             <Setter Property="Visibility" Value="Visible"/>

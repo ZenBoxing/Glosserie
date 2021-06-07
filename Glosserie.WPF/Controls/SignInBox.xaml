@@ -22,7 +22,7 @@
             <Image Source="/Images/UserSignIn.png"/>
             </Border>
             <TextBox Style="{StaticResource UserNameTextBox}"
-                     Tag="USERNAME"
+                     Tag="EMAIL"
                      Grid.Column="1"
                      Grid.ColumnSpan="3"
                      VerticalAlignment="Center"

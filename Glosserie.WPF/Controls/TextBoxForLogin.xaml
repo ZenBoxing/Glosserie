@@ -1,0 +1,179 @@
+﻿<UserControl x:Class="Glosserie.WPF.Controls.TextBoxForLogin"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Glosserie.WPF.Controls"
+             mc:Ignorable="d" 
+             x:Name="_this"
+             Height="60">
+    <UserControl.Resources>
+        <Style x:Key="titleStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="{StaticResource RussianVioletBrush}"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"/>
+            <Setter Property="Text" Value="{Binding PlaceHolder, ElementName=_this}"/>
+            <Setter Property="Padding" Value="2,0"/>
+
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Text, ElementName=email}" Value="">
+                    <!--Default Position and Fontsize of Title-->
+                    <DataTrigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard SpeedRatio="10">
+                                <DoubleAnimation Storyboard.TargetProperty="FontSize" To="20"/>
+                                <ThicknessAnimation Storyboard.TargetProperty="Margin" To="0"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.EnterActions>
+                    <!--Position and Fontsize when Email textbox has value-->
+                    <DataTrigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard SpeedRatio="10">
+                                <DoubleAnimation Storyboard.TargetProperty="FontSize" To="15"/>
+                                <ThicknessAnimation Storyboard.TargetProperty="Margin" To="0 0 0 30"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.ExitActions>
+                </DataTrigger>
+            </Style.Triggers>
+            
+        </Style>
+        
+        <Style x:Key="textStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="Text" Value="{Binding Text, Mode=TwoWay, ElementName=_this}"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="TextAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="{StaticResource MontserratSemiBold}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="2,0"/>
+
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding FontSize, ElementName=title}" Value="15">
+                    <!--Default Position and Fontsize of Title-->
+                    <DataTrigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard SpeedRatio="10">
+                                <DoubleAnimation Storyboard.TargetProperty="FontSize" To="20"/>
+                                <ThicknessAnimation Storyboard.TargetProperty="Margin" To="0 20 0 0"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.EnterActions>
+                    <!--Position and Fontsize when Email textbox has value-->
+                    <DataTrigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard SpeedRatio="10">
+                                <DoubleAnimation Storyboard.TargetProperty="FontSize" To="15"/>
+                                <ThicknessAnimation Storyboard.TargetProperty="Margin" To="0"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.ExitActions>
+                </DataTrigger>
+
+
+                <DataTrigger Binding="{Binding Text, Mode=TwoWay, ElementName=_this}" Value="">
+                    <Setter Property="Text" Value="{Binding Password, ElementName=passwordBox}"/>
+                </DataTrigger>
+
+                <DataTrigger Binding="{Binding isPressed, ElementName=showPassword}" Value="True">
+                    <Setter Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+
+            </Style.Triggers>
+
+
+        </Style>
+        
+        <Style x:Key="passwordStyle" TargetType="{x:Type PasswordBox}">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="{StaticResource MontserratSemiBold}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="2,0, 30 ,0"/>
+
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding FontSize, ElementName=title}" Value="15">
+                    <!--Default Position and Fontsize of Title-->
+                    <DataTrigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard SpeedRatio="10">
+                                <DoubleAnimation Storyboard.TargetProperty="FontSize" To="20"/>
+                                <ThicknessAnimation Storyboard.TargetProperty="Margin" To="0 20 0 0"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.EnterActions>
+                    <!--Position and Fontsize when Email textbox has value-->
+                    <DataTrigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard SpeedRatio="10">
+                                <DoubleAnimation Storyboard.TargetProperty="FontSize" To="15"/>
+                                <ThicknessAnimation Storyboard.TargetProperty="Margin" To="0"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.ExitActions>
+                </DataTrigger>
+
+                <DataTrigger Binding="{Binding isPasswordBox, ElementName=_this}" Value="False">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+                
+                <DataTrigger Binding="{Binding isPressed, ElementName=showPassword}" Value="True">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+            </Style.Triggers>
+
+
+        </Style>
+
+        <Style x:Key="showButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Image Source="/Images/ShowPassword.png"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+               
+    </UserControl.Resources>
+    <Border
+          Background="white"
+          Height="auto"
+          CornerRadius="10">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="23" ShadowDepth="5" Direction="270"
+                            Color="WhiteSmoke"/>
+        </Border.Effect>
+        <Grid Margin="20,6">
+            <!--Title-->
+            <TextBlock x:Name="title"
+                   Style="{StaticResource titleStyle}"/>
+
+            <!--TextBox-->
+            <TextBox x:Name="email"
+                   Style="{StaticResource textStyle}"/>
+
+            <StackPanel Orientation="Horizontal">
+                <PasswordBox
+                x:Name="passwordBox"
+                PasswordChanged="passwordBox_PasswordChanged"
+                Style="{StaticResource passwordStyle}"/>
+
+                <Button
+                x:Name="showPassword"
+                Style="{StaticResource showButtonStyle}"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

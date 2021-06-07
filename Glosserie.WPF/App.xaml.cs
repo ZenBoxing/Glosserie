@@ -44,6 +44,7 @@ namespace Glosserie.WPF
             services.AddSingleton<IViewModelFactory<HomeViewModel>, HomeViewModelFactory>();
             services.AddSingleton<IViewModelFactory<VocabListsViewModel>, VocabListsViewModelFactory>();
             services.AddSingleton<IViewModelFactory<LoginViewModel>, LoginViewModelFactory>();
+            services.AddSingleton<IViewModelFactory<RegisterViewModel>, RegisterViewModelFactory>();
 
             services.AddScoped<ShellViewModel>();
             services.AddScoped<MainWindow>(s => new MainWindow(s.GetRequiredService<ShellViewModel>()));
