@@ -1,6 +1,7 @@
 ﻿using Glosserie.WPF.Library.Models;
 using Glosserie.WPF.Library.Services;
 using Glosserie.WPF.Library.State.Authenticators;
+using Glosserie.WPF.Stores;
 using Glosserie.WPF.ViewModels;
 using Glosserie.WPF.ViewModels.Factories;
 using Microsoft.Extensions.DependencyInjection;
@@ -39,6 +40,8 @@ namespace Glosserie.WPF
             IServiceCollection services = new ServiceCollection();
 
             services.AddSingleton<IVocabListService, VocabListService>();
+            
+            services.AddSingleton<INavigationStore, NavigationStore>();
 
             services.AddSingleton<IViewModelAbstractFactory, ViewModelAbstractFactory>();
             services.AddSingleton<IViewModelFactory<HomeViewModel>, HomeViewModelFactory>();
