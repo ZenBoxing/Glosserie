@@ -10,3 +10,4 @@
 - hide sql SS auth password
 - send register request over https
 - revise bindings on regesterlink button
+- get navigation service though DI

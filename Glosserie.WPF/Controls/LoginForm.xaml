@@ -48,7 +48,7 @@
                     Margin="5 5 5 5"
                     MaxHeight="30"
                     />
-             <local:PasswordBox Grid.Row="3"
+             <local:BindablePasswordBox Grid.Row="3"
                     Margin="5 0 5 0"
                     MaxHeight="30"            
                     />
@@ -62,7 +62,8 @@
             </Button>
             <Button Style="{StaticResource RegisterLink}"
                     Grid.Row="5"
-                    Margin="0 5 0 0">
+                    Margin="0 5 0 0"
+                    Command="{Binding NavigateToRegisterViewCommand}">
                 
             </Button>
         </Grid>

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Glosserie.WPF.ViewModels
 {
-    public enum ViewType
+    public enum TViewModel
     {
         Home,
         Login,
@@ -15,6 +15,8 @@ namespace Glosserie.WPF.ViewModels
 
     public class ViewModelBase : ObservableObject
     {
-
+        public virtual void Dispose() { }   
     }
+
+
 }

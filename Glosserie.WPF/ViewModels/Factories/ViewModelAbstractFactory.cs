@@ -22,17 +22,17 @@ namespace Glosserie.WPF.ViewModels.Factories
             _registerViewModelFactory = registerViewModelFactory;
         }
 
-        public ViewModelBase CreateViewModel(ViewType viewType)
+        public ViewModelBase CreateViewModel(TViewModel viewType)
         {
             switch (viewType)
             {
-                case ViewType.Home:
+                case TViewModel.Home:
                     return _homeViewModelFactory.CreateViewModel();
-                case ViewType.VocabLists:
+                case TViewModel.VocabLists:
                     return _vocabListsViewModelFactory.CreateViewModel();
-                case ViewType.Login:
+                case TViewModel.Login:
                     return _loginViewModelFactory.CreateViewModel();
-                case ViewType.Register:
+                case TViewModel.Register:
                     return _registerViewModelFactory.CreateViewModel();
                 default:
                     throw new ArgumentException("ViewType does not have ViewModel", "ViewType");

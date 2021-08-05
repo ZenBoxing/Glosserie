@@ -20,10 +20,9 @@ namespace Glosserie.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow(object dataContext)
+        public MainWindow()
         {
             InitializeComponent();
-            DataContext = dataContext;
         }
     }
 }

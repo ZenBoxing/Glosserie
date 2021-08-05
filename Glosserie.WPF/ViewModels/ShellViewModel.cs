@@ -1,8 +1,12 @@
-﻿using Glosserie.WPF.Library.Services;
+﻿using Glosserie.WPF.Commands;
+using Glosserie.WPF.Library.Services;
+using Glosserie.WPF.Stores;
 using Glosserie.WPF.ViewModels.Factories;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
+using Glosserie.WPF.Services;
 
 namespace Glosserie.WPF.ViewModels
 {
@@ -10,18 +14,21 @@ namespace Glosserie.WPF.ViewModels
 
     public class ShellViewModel : ViewModelBase
     {
-		private ViewModelBase _activeViewModel;
+		private readonly NavigationStore _navigationStore;
 
-		public ViewModelBase ActiveViewModel
+        public ViewModelBase ActiveViewModel => _navigationStore.ActiveViewModel;
+
+        public ShellViewModel(NavigationStore navigationStore)
 		{
-			get { return _activeViewModel; }
-			set { _activeViewModel = value; }
+			_navigationStore = navigationStore;
+            _navigationStore.ActiveViewModelChanged += OnActiveViewModelChanged;
 		}
 
-		public ShellViewModel(IViewModelAbstractFactory factory)
+		private void OnActiveViewModelChanged()
 		{
-			ActiveViewModel = factory.CreateViewModel(ViewType.Register);
+			OnPropertyChanged(nameof(ActiveViewModel));
 		}
+
 
 	}
 }

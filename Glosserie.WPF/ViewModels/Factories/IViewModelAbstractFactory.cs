@@ -6,6 +6,6 @@ namespace Glosserie.WPF.ViewModels.Factories
 {
     public interface IViewModelAbstractFactory
     {
-        ViewModelBase CreateViewModel(ViewType viewType);
+        ViewModelBase CreateViewModel(TViewModel viewType);
     }
 }

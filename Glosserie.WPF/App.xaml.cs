@@ -1,6 +1,7 @@
 ﻿using Glosserie.WPF.Library.Models;
 using Glosserie.WPF.Library.Services;
 using Glosserie.WPF.Library.State.Authenticators;
+using Glosserie.WPF.Services;
 using Glosserie.WPF.Stores;
 using Glosserie.WPF.ViewModels;
 using Glosserie.WPF.ViewModels.Factories;
@@ -30,6 +31,9 @@ namespace Glosserie.WPF
             //});
 
             IServiceProvider serviceProvider = CreateServiceProvider();
+            INavigationService InitialNavigationService = serviceProvider.GetRequiredService<INavigationService>();
+            InitialNavigationService.Navigate(serviceProvider.GetRequiredService<LoginViewModel>());
+
             Window window = serviceProvider.GetRequiredService<MainWindow>();
             window.Show();
             base.OnStartup(e);
@@ -39,18 +43,25 @@ namespace Glosserie.WPF
         {
             IServiceCollection services = new ServiceCollection();
 
-            services.AddSingleton<IVocabListService, VocabListService>();
-            
-            services.AddSingleton<INavigationStore, NavigationStore>();
+            services.AddSingleton<NavigationStore>();
 
-            services.AddSingleton<IViewModelAbstractFactory, ViewModelAbstractFactory>();
-            services.AddSingleton<IViewModelFactory<HomeViewModel>, HomeViewModelFactory>();
-            services.AddSingleton<IViewModelFactory<VocabListsViewModel>, VocabListsViewModelFactory>();
-            services.AddSingleton<IViewModelFactory<LoginViewModel>, LoginViewModelFactory>();
-            services.AddSingleton<IViewModelFactory<RegisterViewModel>, RegisterViewModelFactory>();
+            services.AddSingleton<IVocabListService, VocabListService>();
+            services.AddSingleton<INavigationService, NavigationService>();
+
+            services.AddTransient<LoginViewModel>();
+            services.AddTransient<RegisterViewModel>();
+            services.AddTransient<CreateViewModel>();
+            services.AddTransient<HomeViewModel>();
+            //services.AddSingleton<IViewModelAbstractFactory, ViewModelAbstractFactory>();
+            //services.AddSingleton<IViewModelFactory<HomeViewModel>, HomeViewModelFactory>();
+            //services.AddSingleton<IViewModelFactory<VocabListsViewModel>, VocabListsViewModelFactory>();
+            //services.AddSingleton<IViewModelFactory<LoginViewModel>, LoginViewModelFactory>();
+            //services.AddSingleton<IViewModelFactory<RegisterViewModel>, RegisterViewModelFactory>();
 
             services.AddScoped<ShellViewModel>();
-            services.AddScoped<MainWindow>(s => new MainWindow(s.GetRequiredService<ShellViewModel>()));
+            services.AddScoped<MainWindow>(s => new MainWindow {
+                DataContext = s.GetRequiredService<ShellViewModel>()
+            });
 
             return services.BuildServiceProvider();
         }
