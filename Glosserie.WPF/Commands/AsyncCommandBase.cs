@@ -8,6 +8,19 @@ namespace Glosserie.WPF.Commands
 {
     public abstract class AsyncCommandBase : ICommand
     {
+        private bool _isExcecuting;
+
+        public bool IsExcecuting
+        {
+            get { return _isExcecuting; }
+            set 
+            {
+                _isExcecuting = value;
+                CanExecuteChanged?.Invoke(this, new EventArgs());
+            }
+        }
+
+
         private readonly Action<Exception> _onException;
 
         public event EventHandler CanExecuteChanged;
@@ -20,11 +33,12 @@ namespace Glosserie.WPF.Commands
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            return !IsExcecuting;
         }
 
         public async void Execute(object parameter)
         {
+            IsExcecuting = true;
             try
             {
                 await ExecuteAsync(parameter);
@@ -33,6 +47,7 @@ namespace Glosserie.WPF.Commands
             {
                 _onException?.Invoke(ex);                
             }
+            IsExcecuting = false;
         }
 
         public abstract Task ExecuteAsync(object parameter);

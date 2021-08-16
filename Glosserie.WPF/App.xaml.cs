@@ -44,14 +44,19 @@ namespace Glosserie.WPF
             IServiceCollection services = new ServiceCollection();
 
             services.AddSingleton<NavigationStore>();
+            services.AddSingleton<UserStore>();
+
 
             services.AddSingleton<IVocabListService, VocabListService>();
             services.AddSingleton<INavigationService, NavigationService>();
+            services.AddSingleton<IAuthenticationService, AuthenticationService>();
+            services.AddSingleton<IAuthenticator, Authenticator>();
 
             services.AddTransient<LoginViewModel>();
             services.AddTransient<RegisterViewModel>();
             services.AddTransient<CreateViewModel>();
             services.AddTransient<HomeViewModel>();
+            services.AddTransient<VocabListsViewModel>();
             //services.AddSingleton<IViewModelAbstractFactory, ViewModelAbstractFactory>();
             //services.AddSingleton<IViewModelFactory<HomeViewModel>, HomeViewModelFactory>();
             //services.AddSingleton<IViewModelFactory<VocabListsViewModel>, VocabListsViewModelFactory>();

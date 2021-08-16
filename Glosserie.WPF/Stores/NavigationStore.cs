@@ -12,7 +12,8 @@ namespace Glosserie.WPF.Stores
         public ViewModelBase ActiveViewModel
         {
             get { return _activeViewModel; }
-            set { 
+            set {
+                    _activeViewModel?.Dispose();
                     _activeViewModel = value;
                     OnActiveViewModelChanged();
                 }
