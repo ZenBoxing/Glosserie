@@ -41,16 +41,39 @@ namespace Glosserie.WPF.ViewModels
             }
         }
 
+        private string _statusMessage;
+        public string StatusMessage
+        {
+            get
+            {
+                return _statusMessage;
+            }
+            set
+            {
+                _statusMessage = value;
+                OnPropertyChanged(nameof(StatusMessage));
+            }
+        }
+
+        public bool IsLoginInvalid => StatusMessage != null;
+
         public ICommand NavigateToRegisterViewCommand { get; }
         public ICommand LoginNavigateCommand { get; }
 
-        public LoginViewModel(NavigationStore navStore)
+        private readonly IAuthenticator _authenticator;
+        private readonly IVocabListService _vocabListService;
+
+        public LoginViewModel(NavigationStore navStore, IAuthenticator authenticator,
+            IVocabListService vocabListService)
         {
             NavigateToRegisterViewCommand = new NavigateCommand
                 (new NavigationService(navStore, () => new RegisterViewModel()));
+            _authenticator = authenticator;
+            _vocabListService = vocabListService;
 
-        //    LoginNavigateCommand = new LoginNavigateCommand(this, new NavigationService(navStore,
-        //        () => new HomeViewModel(new VocabListsViewModel(new VocabListService()))), new Authenticator(new AuthenticationService()),);
+            LoginNavigateCommand = new LoginNavigateCommand(this, new NavigationService(navStore,
+                () => new HomeViewModel(new VocabListsViewModel(_vocabListService))),
+                _authenticator, (Exception ex) => StatusMessage = ex.Message);
         }
     }
 }

@@ -39,8 +39,8 @@ namespace Glosserie.WPF.Commands
                 _navigationService.Navigate();
             }
             else
-            { 
-               //throw exception             
+            {
+                throw new Exception("Invalid Login");             
             }
             //if login is successful, add user to  and navigate to homepage.
             //if login unsuccessful: ???
