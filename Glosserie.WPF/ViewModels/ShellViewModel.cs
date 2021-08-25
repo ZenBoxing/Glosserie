@@ -1,7 +1,6 @@
 ﻿using Glosserie.WPF.Commands;
 using Glosserie.WPF.Library.Services;
 using Glosserie.WPF.Stores;
-using Glosserie.WPF.ViewModels.Factories;
 using System;
 using System.Collections.Generic;
 using System.Text;

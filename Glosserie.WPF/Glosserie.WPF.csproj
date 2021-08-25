@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ViewModels\Factories\**" />
+    <EmbeddedResource Remove="ViewModels\Factories\**" />
+    <None Remove="ViewModels\Factories\**" />
+    <Page Remove="ViewModels\Factories\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Fonts\Montserrat-Light.otf" />
     <None Remove="Fonts\Montserrat-Regular.otf" />
     <None Remove="Fonts\Montserrat-SemiBold.otf" />

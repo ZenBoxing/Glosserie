@@ -4,7 +4,6 @@ using Glosserie.WPF.Library.State.Authenticators;
 using Glosserie.WPF.Services;
 using Glosserie.WPF.Stores;
 using Glosserie.WPF.ViewModels;
-using Glosserie.WPF.ViewModels.Factories;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -44,8 +43,6 @@ namespace Glosserie.WPF
             IServiceCollection services = new ServiceCollection();
 
             services.AddSingleton<NavigationStore>();
-            services.AddSingleton<UserStore>();
-
 
             services.AddSingleton<IVocabListService, VocabListService>();
             services.AddSingleton<INavigationService, NavigationService>();
@@ -57,11 +54,6 @@ namespace Glosserie.WPF
             services.AddTransient<CreateViewModel>();
             services.AddTransient<HomeViewModel>();
             services.AddTransient<VocabListsViewModel>();
-            //services.AddSingleton<IViewModelAbstractFactory, ViewModelAbstractFactory>();
-            //services.AddSingleton<IViewModelFactory<HomeViewModel>, HomeViewModelFactory>();
-            //services.AddSingleton<IViewModelFactory<VocabListsViewModel>, VocabListsViewModelFactory>();
-            //services.AddSingleton<IViewModelFactory<LoginViewModel>, LoginViewModelFactory>();
-            //services.AddSingleton<IViewModelFactory<RegisterViewModel>, RegisterViewModelFactory>();
 
             services.AddScoped<ShellViewModel>();
             services.AddScoped<MainWindow>(s => new MainWindow {
