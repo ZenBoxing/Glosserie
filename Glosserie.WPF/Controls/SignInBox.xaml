@@ -26,6 +26,7 @@
                      Grid.Column="1"
                      Grid.ColumnSpan="3"
                      VerticalAlignment="Center"
+                     Text="{Binding Email}"
                      />
     </Grid>
     </Border>

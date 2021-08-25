@@ -22,7 +22,12 @@ namespace Glosserie.WPF.Library.State.Authenticators
 
         public Task<UserModel> Login(LoginModel info)
         {
-            return _authenticationService.Login(info);
+            return  _authenticationService.Login(info);
+        }
+
+        public void UpdateCurrentUser(UserModel userModel)
+        {
+            CurrentUser = userModel;
         }
 
         public void Logout()

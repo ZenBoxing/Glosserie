@@ -30,12 +30,9 @@ namespace Glosserie.WPF.Commands
         {
             //attempt to login user
             UserModel user = await _authenticator.Login(new LoginModel(_loginViewModel.Email, _loginViewModel.Password));
-            if (user.Email == _loginViewModel.Email)
+            if (user.UserID != 0)
             {
-                _authenticator.CurrentUser.Email = user.Email;
-                _authenticator.CurrentUser.Password = user.Password;
-                _authenticator.CurrentUser.UserID = user.UserID;
-
+                _authenticator.UpdateCurrentUser(user);                
                 _navigationService.Navigate();
             }
             else

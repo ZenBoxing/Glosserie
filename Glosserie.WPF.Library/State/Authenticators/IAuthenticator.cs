@@ -13,7 +13,7 @@ namespace Glosserie.WPF.Library.State.Authenticators
 
         Task<bool> Register(RegistrationModel info);
         Task<UserModel> Login(LoginModel info);
-        void Logout(); 
-        
+        void Logout();
+        void UpdateCurrentUser(UserModel userModel);
     }
 }

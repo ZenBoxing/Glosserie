@@ -15,7 +15,7 @@ namespace Glosserie.WPF.Library.Services
                 string uri = "user/login";
                 //string uri = "user";
                 var record = await client.PostAsync<UserModel, LoginModel>(uri,info);
-
+                
                 return record;
             }
         }
