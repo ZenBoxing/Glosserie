@@ -59,20 +59,15 @@ namespace Glosserie.WPF.ViewModels
         public ICommand NavigateToRegisterViewCommand { get; }
         public ICommand LoginNavigateCommand { get; }
 
-        private readonly IAuthenticator _authenticator;
-        private readonly IVocabListService _vocabListService;
-
         public LoginViewModel(NavigationStore navStore, IAuthenticator authenticator,
             IVocabListService vocabListService)
         {
             NavigateToRegisterViewCommand = new NavigateCommand
-                (new NavigationService(navStore, () => new RegisterViewModel()));
-            _authenticator = authenticator;
-            _vocabListService = vocabListService;
+                (new NavigationService(navStore, () => new RegisterViewModel(navStore,authenticator,vocabListService)));
 
             LoginNavigateCommand = new LoginNavigateCommand(this, new NavigationService(navStore,
-                () => new HomeViewModel(new VocabListsViewModel(_vocabListService))),
-                _authenticator, (Exception ex) => StatusMessage = ex.Message);
+                () => new HomeViewModel(new VocabListsViewModel(vocabListService))),
+                authenticator, (Exception ex) => StatusMessage = ex.Message);
         }
     }
 }

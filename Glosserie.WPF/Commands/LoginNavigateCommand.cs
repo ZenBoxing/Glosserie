@@ -28,7 +28,7 @@ namespace Glosserie.WPF.Commands
 
         public override async Task ExecuteAsync(object parameter)
         {
-            //attempt to login user
+            
             UserModel user = await _authenticator.Login(new LoginModel(_loginViewModel.Email, _loginViewModel.Password));
             if (user.UserID != 0)
             {
@@ -39,8 +39,7 @@ namespace Glosserie.WPF.Commands
             {
                 throw new Exception("Invalid Login");             
             }
-            //if login is successful, add user to  and navigate to homepage.
-            //if login unsuccessful: ???
+            
         }
     }
 }

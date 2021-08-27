@@ -7,6 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              FontFamily="{StaticResource MontserratLight}">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </UserControl.Resources>
     <Grid>
         <Border BorderBrush="{StaticResource MidnightBlueBrush}"
             BorderThickness="5"
@@ -19,6 +22,7 @@
               MaxWidth="350"
               RenderOptions.EdgeMode="Aliased">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
@@ -46,18 +50,31 @@
                 <local:BindablePasswordBox  
                     Grid.Row="3"
                     MaxHeight="30"
-                    Margin="5 0 5 0"/>
+                    Margin="5 0 5 0"
+                    Password="{Binding Password}"/>
                 <local:BindablePasswordBox Grid.Row="4"
                     MaxHeight="30"
                     Margin="5 5 5 5"
-                    isConfirmPassword="True"/>
+                    isConfirmPassword="True"
+                    Password="{Binding ConfirmPassword}"/>
                 <Button Style="{StaticResource SignInButton}" 
                     Grid.Row="5" 
                     Content="REGISTER"
                     Margin="0 10 0 0"
                     MaxHeight="35"
-                    MaxWidth="175">
+                    MaxWidth="175"
+                    Command="{Binding RegisterNavigateCommand}">
                 </Button>
+                <TextBlock
+                Grid.Row="6"
+                Text="{Binding StatusMessage}"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Foreground="IndianRed"
+                Margin="0 5 0 0"
+                FontFamily="{StaticResource MontserratRegular}"
+                Visibility="{Binding IsRegistrationInvalid, Converter={StaticResource BooleanToVisibilityConverter}}"
+                />
                 
             </Grid>
 

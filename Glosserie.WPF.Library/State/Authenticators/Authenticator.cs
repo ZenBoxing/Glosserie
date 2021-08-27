@@ -27,7 +27,10 @@ namespace Glosserie.WPF.Library.State.Authenticators
 
         public void UpdateCurrentUser(UserModel userModel)
         {
-            CurrentUser = userModel;
+            CurrentUser = new UserModel { 
+                UserID = userModel.UserID,
+                Email = userModel.Email,
+            };
         }
 
         public void Logout()
