@@ -32,6 +32,7 @@
 
             <Image Source="/Images/LibraryBooks1.png"
                    Grid.Row="0"
+                   RenderOptions.BitmapScalingMode="Fant"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    Margin="0 5 0 5"

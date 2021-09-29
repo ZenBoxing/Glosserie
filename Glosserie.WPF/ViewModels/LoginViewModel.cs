@@ -51,6 +51,7 @@ namespace Glosserie.WPF.ViewModels
             {
                 _statusMessage = value;
                 OnPropertyChanged(nameof(StatusMessage));
+                OnPropertyChanged(nameof(IsLoginInvalid));
             }
         }
 

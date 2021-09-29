@@ -12,7 +12,6 @@ namespace Glosserie.WPF.ViewModels
 {
     public class VocabListsViewModel : ViewModelBase
     {
-		public string BindingTest { get; set; } = "Bound to vocablists";
 		public string StatusMessage;
 
 		private BindingList<VocabListModel> _vocabLists;

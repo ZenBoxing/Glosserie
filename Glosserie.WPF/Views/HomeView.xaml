@@ -8,7 +8,7 @@
              xmlns:local="clr-namespace:Glosserie.WPF.Views"
              xmlns:controls="clr-namespace:Glosserie.WPF.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
+             d:DesignHeight="650" d:DesignWidth="1000"
              >
     
     <i:Interaction.Triggers>
@@ -16,55 +16,65 @@
             <i:InvokeCommandAction Command="{Binding VocabListsViewModel.LoadVocabListsCommand}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    
-    <Grid Background="{StaticResource MidnightBlueBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
+    <Grid Background="{StaticResource RussianVioletBrush}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Grid
-            Grid.Row="0"
-            Grid.Column="0"
-            Grid.ColumnSpan="2"
-            MinHeight="100"
-            Background="{StaticResource RussianVioletBrush}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-            </Grid.ColumnDefinitions>
-            <Button Style="{StaticResource OpenButton}" Grid.Column="1"  VerticalAlignment="Center" Margin="10 0"/>
-            <Button Style="{StaticResource EditButton}" Grid.Column="2" VerticalAlignment="Center" Margin="10 0"/>
-            <Button Style="{StaticResource DeleteButton}" Grid.Column="3" VerticalAlignment="Center" Margin="10 0"/>
-        </Grid>
-        <controls:VocabListItemControl Grid.Row="1" 
-                                       Grid.Column="0"
-                                        MinWidth="305"
-                                        MaxWidth="305"
-                                        Height="300"
-                                        Margin="15 0 0 0"
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Center"/>
-        <Button Style="{StaticResource CreateButton}"
-                Grid.Row="1"
-                Grid.Column="1"
-                Margin="0 0 25 25"
-                Width="75"
-                Height="75"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Bottom"/>
-        <StackPanel
-            Grid.Row="2"
-            Grid.Column="0"
-            Grid.ColumnSpan="2"
-            MinHeight="50"
-            Background="{StaticResource RussianVioletBrush}"></StackPanel>
+        <Border BorderThickness="2"
+                BorderBrush="{StaticResource MidnightBlueBrush}"
+                Grid.Column="0">
+            <StackPanel Orientation="Vertical">
+                <Label Content="YOUR LISTS"
+                   FontFamily="{StaticResource MontserratSemiBold}"
+                   Foreground="{StaticResource LavenderWebBrush}"
+                   FontSize="20"
+                   HorizontalAlignment="Center"
+                   Margin="0,20,0,0"/>
+                <controls:VocabListItemControl/>
+            </StackPanel>
+        </Border>
+        <StackPanel Orientation="Vertical"
+                    Grid.Column="1">
+            <Border x:Name="TopControl" 
+                   BorderThickness="0,0,0,2"
+                    BorderBrush="{StaticResource MidnightBlueBrush}">
+                <StackPanel Orientation="Horizontal"
+                            Height="40"
+                            HorizontalAlignment="Right"
+                            Margin="0,5,20,5">
+                    <Button Style="{StaticResource EditButton}"/>
+                    <Button Style="{StaticResource DeleteButton}"
+                            />
+                </StackPanel>
+            </Border>
+            <Border x:Name="MidControl"
+                    BorderThickness="0,0,0,0"
+                    BorderBrush="{StaticResource MidnightBlueBrush}">
+                <StackPanel Orientation="Horizontal"
+                            Height="500"
+                            >
+                    <Label Content="Hello"
+                           FontSize="20"
+                           Foreground="White"></Label>
+                </StackPanel>
+            </Border>
+            <Border x:Name="BottomControl"
+                    BorderThickness="0,2,0,0"
+                    BorderBrush="{StaticResource MidnightBlueBrush}">
+                <StackPanel Orientation="Horizontal"
+                            Height="40"
+                            >
+                    <Label Content="Hello"
+                           FontSize="20"
+                           Foreground="White"></Label>
+                </StackPanel>
+            </Border>
+            
+        </StackPanel>
         
     </Grid>
+    
+    
+    
 </UserControl>

@@ -14,9 +14,6 @@ namespace Glosserie.WPF.ViewModels
     {
         public VocabListsViewModel VocabListsViewModel { get; set; }
 
-        public string Test { get; set; } = "Testing Hello";
-
-
         public HomeViewModel(VocabListsViewModel vocabListsViewModel)
         {
             VocabListsViewModel = vocabListsViewModel;

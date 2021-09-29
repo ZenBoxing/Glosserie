@@ -12,6 +12,7 @@ namespace Glosserie.WPF.ViewModels
 {
     public class RegisterViewModel : ViewModelBase
     {
+
         private string _email;
         public string Email
         {
@@ -65,20 +66,23 @@ namespace Glosserie.WPF.ViewModels
             {
                 _statusMessage = value;
                 OnPropertyChanged(nameof(StatusMessage));
+                OnPropertyChanged(nameof(IsRegistrationInvalid));
             }
         }
 
         public bool IsRegistrationInvalid => StatusMessage != null;
-        public ICommand RegisterNavigateCommand;
+
+        public ICommand RegisterNavigateCommand { get; }
 
         public RegisterViewModel(NavigationStore navigationStore, IAuthenticator authenticator, IVocabListService vocabListService)
         {
             RegisterNavigateCommand = new RegisterNavigateCommand
-                (new NavigationService(navigationStore, 
+                (new NavigationService(navigationStore,
                 () => new HomeViewModel(new VocabListsViewModel(vocabListService))),
-                authenticator, 
+                authenticator,
                 this,
                 (Exception ex) => StatusMessage = ex.Message);
+
         }
     }
 }

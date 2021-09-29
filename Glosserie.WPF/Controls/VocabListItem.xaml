@@ -7,23 +7,30 @@
              xmlns:vm="clr-namespace:Glosserie.WPF.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="60" d:DesignWidth="400">
-    <Grid Background="{StaticResource LavenderWebBrush}" 
-          >
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Image Grid.Column="0"
-               Source="/Images/BookClosedWF.png"/>
-        <TextBlock Grid.Column="1"
+
+        <Border BorderBrush="{StaticResource RussianVioletBrush}"
+                BorderThickness="3"
+                CornerRadius="30"
+                Width="210">
+        <StackPanel Background="{StaticResource MidnightBlueBrush}" 
+          Orientation="Horizontal"
+          Width="210">
+            <Image 
+               Source="/Images/BookClosedWF.png"
+               RenderOptions.BitmapScalingMode="Fant"/>
+               
+            <TextBlock 
                    Text="{Binding ListName, FallbackValue=[Title]}"
                    VerticalAlignment="Center"
-                   FontSize="24"
+                   FontSize="16"
                    FontFamily="{StaticResource MontserratSemiBold}"
-                   Foreground="{StaticResource RussianVioletBrush}"
+                   Foreground="{StaticResource LavenderWebBrush}"
                    TextTrimming="CharacterEllipsis"
                    MaxWidth="250"
                    MinWidth="250"
                    HorizontalAlignment="Left"/>
-    </Grid>
+        </StackPanel>
+    </Border>   
+        
+    
 </UserControl>
