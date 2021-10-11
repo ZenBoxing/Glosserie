@@ -1,0 +1,45 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="VocabListItem" TargetType="{x:Type ListBoxItem}">
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="{StaticResource LavenderWebBrush}"/>
+            </Trigger>         
+        </Style.Triggers>
+        <Setter Property="Template">
+            <Setter.Value >
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <Border BorderBrush="{StaticResource RussianVioletBrush}"
+                            BorderThickness="3"
+                            CornerRadius="30"
+                            Width="210">
+                        <StackPanel Background="{StaticResource MidnightBlueBrush}" 
+                                    Orientation="Horizontal"
+                                    Width="210"
+                                    Name="Panel">
+                            <Image 
+                                    Source="/Images/BookClosedWF.png"
+                                    RenderOptions.BitmapScalingMode="Fant"/>
+
+                            <TextBlock 
+                   Text="{Binding ListName, FallbackValue=[Title]}"
+                   VerticalAlignment="Center"
+                   FontSize="16"
+                   FontFamily="{StaticResource MontserratSemiBold}"
+                   Foreground="{StaticResource LavenderWebBrush}"
+                   TextTrimming="CharacterEllipsis"
+                   MaxWidth="250"
+                   MinWidth="250"
+                   HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" TargetName="Panel" Value="{StaticResource LavenderWebBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>    
+</ResourceDictionary>

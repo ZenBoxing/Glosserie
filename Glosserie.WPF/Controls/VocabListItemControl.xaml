@@ -24,13 +24,15 @@
     <Grid DataContext="{Binding VocabListsViewModel}" 
           Background="{StaticResource RussianVioletBrush}">
         <ListBox ItemsSource="{Binding VocabLists}" 
-                    Style="{StaticResource ListBoxStyle}">
-            <ItemsControl.ItemTemplate>
+                 Style="{StaticResource ListBoxStyle}"
+                 ItemContainerStyle="{StaticResource VocabListItem}">
+                               
+            <!--<ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <local:VocabListItem 
                             />
                 </DataTemplate>
-                </ItemsControl.ItemTemplate>
+                </ItemsControl.ItemTemplate>-->
             </ListBox>
     </Grid>
 </UserControl>
