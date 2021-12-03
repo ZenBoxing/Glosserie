@@ -178,6 +178,13 @@ namespace Glosserie.API.Data.Repositories
                 var records = _sqlDataAccess.LoadData<VocabListModel, dynamic>
                         ("ListeraDB.listeradb.spGetListByUserID", new { userId = userId }, "GlosserieSSAuth");
 
+                foreach (var vocabList in records)
+                {
+                    vocabList.ListEntries = _sqlDataAccess.LoadData<EntryModel, dynamic>
+                    ("ListeraDB.listeradb.spGetEntriesByList", new { listID = vocabList.ListId }, "GlosserieSSAuth");
+                }
+
+
                 return records;
             }
             catch (Exception ex)

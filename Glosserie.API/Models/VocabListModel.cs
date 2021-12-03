@@ -10,5 +10,6 @@ namespace Glosserie.API.Models
         public int ListId { get; set; }
         public int UserId { get; set; }
         public string ListName { get; set; }
+        public List<EntryModel> ListEntries { get; set; }
     }
 }
