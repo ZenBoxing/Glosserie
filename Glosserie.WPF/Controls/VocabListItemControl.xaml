@@ -25,7 +25,8 @@
           Background="{StaticResource RussianVioletBrush}">
         <ListBox ItemsSource="{Binding VocabLists}" 
                  Style="{StaticResource ListBoxStyle}"
-                 ItemContainerStyle="{StaticResource VocabListItem}">
+                 ItemContainerStyle="{StaticResource VocabListItem}"
+                 SelectedItem="{Binding SelectedVocabList}">
                                
             <!--<ItemsControl.ItemTemplate>
                 <DataTemplate>

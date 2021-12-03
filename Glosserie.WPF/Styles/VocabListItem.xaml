@@ -21,7 +21,7 @@
                                     Source="/Images/BookClosedWF.png"
                                     RenderOptions.BitmapScalingMode="Fant"/>
 
-                            <TextBlock 
+                    <TextBlock 
                    Text="{Binding ListName, FallbackValue=[Title]}"
                    VerticalAlignment="Center"
                    FontSize="16"
@@ -41,5 +41,66 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>    
+    </Style>
+
+    <Style x:Key="SelectedItemListStyle" TargetType="{x:Type ListBoxItem}">
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="{StaticResource LavenderWebBrush}"/>
+            </Trigger>
+        </Style.Triggers>
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value >
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <Border BorderBrush="{StaticResource RussianVioletBrush}"
+                            BorderThickness="3"
+                            CornerRadius="30"
+                            >
+                        <StackPanel Background="{StaticResource MidnightBlueBrush}" 
+                                    Orientation="Horizontal"
+                                    Width="750"
+                                    Name="Panel">
+
+                           <Label 
+                           Content="{Binding Word, FallbackValue=[Word]}"
+                           VerticalAlignment="Center"
+                           FontSize="16"
+                           FontFamily="{StaticResource MontserratSemiBold}"
+                           Foreground="{StaticResource LavenderWebBrush}"
+                           MaxWidth="100"
+                           MinWidth="100"
+                           HorizontalAlignment="Left"/>
+                            
+                           <Label 
+                           Content="{Binding WordType, FallbackValue=[PartOfSpeech]}"
+                           VerticalAlignment="Center"
+                           FontSize="16"
+                           FontFamily="{StaticResource MontserratSemiBold}"
+                           Foreground="{StaticResource LavenderWebBrush}"
+                           MaxWidth="50"
+                           MinWidth="50"
+                           HorizontalAlignment="Left"/>
+                            
+                           <Label
+                           Content="{Binding Definition, FallbackValue=[Definition]}"
+                           VerticalAlignment="Center"
+                           FontSize="8"
+                           FontFamily="{StaticResource MontserratSemiBold}"
+                           Foreground="{StaticResource LavenderWebBrush}"
+                           MaxWidth="600"
+                           MinWidth="600"
+                           HorizontalAlignment="Center"/>
+                                </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" TargetName="Panel" Value="{StaticResource LavenderWebBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

@@ -29,6 +29,7 @@ namespace Glosserie.WPF
             //    Password = "Password"
             //});
 
+            ResourceDictionary dictionary = this.Resources;
             IServiceProvider serviceProvider = CreateServiceProvider();
             INavigationService InitialNavigationService = serviceProvider.GetRequiredService<INavigationService>();
             InitialNavigationService.Navigate(serviceProvider.GetRequiredService<LoginViewModel>());
@@ -37,7 +38,7 @@ namespace Glosserie.WPF
             window.Show();
             base.OnStartup(e);
         }
-
+ 
         private IServiceProvider CreateServiceProvider()
         {
             IServiceCollection services = new ServiceCollection();

@@ -23,24 +23,35 @@ namespace Glosserie.WPF.ViewModels
 			{
 				_vocabLists = value;
 				OnPropertyChanged(nameof(VocabLists));
-				OnPropertyChanged(nameof(VocabListItemViewModels));
+				//OnPropertyChanged(nameof(VocabListItemViewModels));
 			}
 		}
 
-		private List<VocabListItemViewModel> _vocabListItemViewModels;
-
-		public List<VocabListItemViewModel> VocabListItemViewModels
-		{
-			get { return _vocabListItemViewModels; }
-			set 
-			{
-				_vocabListItemViewModels = value;
-				OnPropertyChanged(nameof(VocabListItemViewModels));
+        private VocabListModel _selectedVocabList;
+					
+        public VocabListModel SelectedVocabList
+        {
+            get { return _selectedVocabList; }
+            set { 
+					_selectedVocabList = value;
+				    OnPropertyChanged(nameof(SelectedVocabList));
 			}
-		}
+        }
+
+        //private List<VocabListItemViewModel> _vocabListItemViewModels;
+
+        //public List<VocabListItemViewModel> VocabListItemViewModels
+        //{
+        //	get { return _vocabListItemViewModels; }
+        //	set 
+        //	{
+        //		_vocabListItemViewModels = value;
+        //		OnPropertyChanged(nameof(VocabListItemViewModels));
+        //	}
+        //}
 
 
-		private readonly IVocabListService _vocabListService;
+        private readonly IVocabListService _vocabListService;
 		public ICommand LoadVocabListsCommand { get; set; }
 
 		public VocabListsViewModel(IVocabListService vocabListService)
@@ -54,30 +65,22 @@ namespace Glosserie.WPF.ViewModels
 
 		private async Task LoadVocabListsAsync()
 		{
-			//_vocabListService.GetVocabLists().ContinueWith(task =>
-			//{
-			//	if (task.Exception == null)
-			//	{
-			//		var records =  task.Result;
-			//		VocabLists = new BindingList<VocabListModel>(records);
-			//	}
-			//});
 
 			var records = await _vocabListService.GetVocabLists();
 			VocabLists = new BindingList<VocabListModel>(records);
-			VocabListItemViewModels = CreateVocabListViewModels(VocabLists);
+			//VocabListItemViewModels = CreateVocabListViewModels(VocabLists);
 		}
 
-		private List<VocabListItemViewModel> CreateVocabListViewModels(ICollection<VocabListModel> vocabListModels)
-		{
-			List<VocabListItemViewModel> itemList = new List<VocabListItemViewModel>();
-			foreach (var item in vocabListModels)
-			{
-				itemList.Add(new VocabListItemViewModel{ Title = item.ListName});
-			}
+		//private List<VocabListItemViewModel> CreateVocabListViewModels(ICollection<VocabListModel> vocabListModels)
+		//{
+		//	List<VocabListItemViewModel> itemList = new List<VocabListItemViewModel>();
+		//	foreach (var item in vocabListModels)
+		//	{
+		//		itemList.Add(new VocabListItemViewModel{ Title = item.ListName});
+		//	}
 
-			return itemList;
-		}
+		//	return itemList;
+		//}
 
 		
 	}

@@ -31,7 +31,8 @@
                    FontSize="20"
                    HorizontalAlignment="Center"
                    Margin="0,20,0,0"/>
-                <controls:VocabListItemControl/>
+                <controls:VocabListItemControl
+                    x:Name="VocabListsListBox"/>
             </StackPanel>
         </Border>
         <StackPanel Orientation="Vertical"
@@ -54,9 +55,9 @@
                 <StackPanel Orientation="Horizontal"
                             Height="500"
                             >
-                    <Label Content="Hello"
-                           FontSize="20"
-                           Foreground="White"></Label>
+                    <controls:SelectedListItemControl
+                        x:Name="SelectedListItemControl"
+                        Width="750"/>
                 </StackPanel>
             </Border>
             <Border x:Name="BottomControl"
