@@ -4,8 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Glosserie.WPF.Controls"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
+             x:Name="_this"
              d:DesignHeight="450" d:DesignWidth="300">
+    <UserControl.Resources>
+        
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
@@ -30,11 +34,30 @@
                     FontSize="20"/>
         </StackPanel>
         <Rectangle Grid.Row="1"
-                   Fill="{StaticResource BabyPowderBrush}"/>
-        <StackPanel Orientation="Vertical"
+                   Fill="{StaticResource BabyPowderBrush}">
+            <Rectangle.Style>
+                <Style TargetType="{x:Type Rectangle}" >
+                </Style>
+            </Rectangle.Style>
+        </Rectangle>
+        <StackPanel x:Name="MainControlPanel"
+                    Orientation="Vertical"
                     HorizontalAlignment="Center"
                     Grid.Row="1"
-                    Visibility="Visible">
+                    
+                    >
+            <StackPanel.Style>
+                <Style TargetType="{x:Type StackPanel}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=IsOpen, ElementName=_this}" Value="True">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=IsOpen, ElementName=_this}" Value="False">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </StackPanel.Style>    
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center">
