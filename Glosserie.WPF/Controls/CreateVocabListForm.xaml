@@ -31,12 +31,18 @@
                     BorderThickness="0"
                     FontFamily="{StaticResource MontserratRegular}"
                     Foreground="{StaticResource BabyPowderBrush}"
-                    FontSize="20"/>
+                    FontSize="20"
+                    >
+            </Button>
         </StackPanel>
-        <Rectangle Grid.Row="1"
-                   Fill="{StaticResource BabyPowderBrush}">
+        <Rectangle x:Name="BkGrdRectangle"
+                   Grid.Row="1"
+                   Fill="{StaticResource BabyPowderBrush}"
+                   >
             <Rectangle.Style>
                 <Style TargetType="{x:Type Rectangle}" >
+                    <Style.Triggers>
+                    </Style.Triggers>
                 </Style>
             </Rectangle.Style>
         </Rectangle>
