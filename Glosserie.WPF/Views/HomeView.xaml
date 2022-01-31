@@ -6,7 +6,7 @@
              xmlns:i ="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:vm="clr-namespace:Glosserie.WPF.ViewModels"
              xmlns:local="clr-namespace:Glosserie.WPF.Views"
-             xmlns:controls="clr-namespace:Glosserie.WPF.Controls"
+             xmlns:controls="clr-namespace:Glosserie.WPF.Controls" xmlns:modalcontrol="clr-namespace:ModalControl;assembly=ModalControl"
              mc:Ignorable="d" 
              d:DesignHeight="650" d:DesignWidth="1000"
              >
@@ -16,66 +16,72 @@
             <i:InvokeCommandAction Command="{Binding VocabListsViewModel.LoadVocabListsCommand}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Grid Background="{StaticResource RussianVioletBrush}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Border BorderThickness="2"
+    <Grid>
+        <modalcontrol:Modal Panel.ZIndex="100" IsOpen="False">
+            <controls:CreateVocabListForm/>
+        </modalcontrol:Modal>
+        <Grid Background="{StaticResource RussianVioletBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border BorderThickness="2"
                 BorderBrush="{StaticResource MidnightBlueBrush}"
                 Grid.Column="0">
-            <StackPanel Orientation="Vertical">
-                <Label Content="YOUR LISTS"
+                <StackPanel Orientation="Vertical">
+                    <Label Content="YOUR LISTS"
                    FontFamily="{StaticResource MontserratSemiBold}"
                    Foreground="{StaticResource LavenderWebBrush}"
                    FontSize="20"
                    HorizontalAlignment="Center"
                    Margin="0,20,0,0"/>
-                <controls:VocabListItemControl
+                    <controls:VocabListItemControl
                     x:Name="VocabListsListBox"/>
-            </StackPanel>
-        </Border>
-        <StackPanel Orientation="Vertical"
+                </StackPanel>
+            </Border>
+            <StackPanel Orientation="Vertical"
                     Grid.Column="1">
-            <Border x:Name="TopControl" 
+                <Border x:Name="TopControl" 
                    BorderThickness="0,0,0,2"
                     BorderBrush="{StaticResource MidnightBlueBrush}">
-                <StackPanel Orientation="Horizontal"
+                    <StackPanel Orientation="Horizontal"
                             Height="40"
                             HorizontalAlignment="Right"
                             Margin="0,5,20,5">
-                    <Button Style="{StaticResource EditButton}"/>
-                    <Button Style="{StaticResource DeleteButton}"
+                        
+                        <Button Style="{StaticResource CreateListButton}"/>
+                        <Button Style="{StaticResource EditButton}"/>
+                        <Button Style="{StaticResource DeleteButton}"
                             />
-                </StackPanel>
-            </Border>
-            <Border x:Name="MidControl"
+                    </StackPanel>
+                </Border>
+                <Border x:Name="MidControl"
                     BorderThickness="0,0,0,0"
                     BorderBrush="{StaticResource MidnightBlueBrush}">
-                <StackPanel Orientation="Horizontal"
+                    <StackPanel Orientation="Horizontal"
                             Height="500"
                             >
-                    <controls:SelectedListItemControl
+                        <controls:SelectedListItemControl
                         x:Name="SelectedListItemControl"
                         Width="750"/>
-                </StackPanel>
-            </Border>
-            <Border x:Name="BottomControl"
+                    </StackPanel>
+                </Border>
+                <Border x:Name="BottomControl"
                     BorderThickness="0,2,0,0"
                     BorderBrush="{StaticResource MidnightBlueBrush}">
-                <StackPanel Orientation="Horizontal"
+                    <StackPanel Orientation="Horizontal"
                             Height="40"
                             >
-                    <Label Content="Hello"
+                        <Label Content="Hello"
                            FontSize="20"
                            Foreground="White"></Label>
-                </StackPanel>
-            </Border>
-            
-        </StackPanel>
-        
+                    </StackPanel>
+                </Border>
+
+            </StackPanel>
+
+        </Grid>
     </Grid>
-    
-    
-    
+
+
 </UserControl>

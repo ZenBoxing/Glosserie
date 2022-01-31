@@ -17,11 +17,13 @@
     <None Remove="Fonts\Montserrat-Light.otf" />
     <None Remove="Fonts\Montserrat-Regular.otf" />
     <None Remove="Fonts\Montserrat-SemiBold.otf" />
+    <None Remove="Images\AddNew.png" />
+    <None Remove="Images\AddNewDisabled.png" />
+    <None Remove="Images\AddNewMouseOver.png" />
     <None Remove="Images\BookClosedWF.png" />
     <None Remove="Images\BookShelf4.png" />
     <None Remove="Images\BookShelfLG.png" />
     <None Remove="Images\BookShelfMain.png" />
-    <None Remove="Images\Create.png" />
     <None Remove="Images\Data-Edit.png" />
     <None Remove="Images\Data-EditDisabled.png" />
     <None Remove="Images\Data-EditMouseOver.png" />
@@ -44,6 +46,7 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.8" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.8" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
+    <PackageReference Include="SimpleModal.WPF" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -51,6 +54,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\AddNew.png" />
+    <Resource Include="Images\AddNewDisabled.png" />
+    <Resource Include="Images\AddNewMouseOver.png" />
     <Resource Include="Images\BookClosedWF.png" />
     <Resource Include="Images\BookShelf4.png" />
     <Resource Include="Images\BookShelfLG.png" />
@@ -61,7 +67,6 @@
     <Resource Include="Fonts\Montserrat-Light.otf" />
     <Resource Include="Fonts\Montserrat-Regular.otf" />
     <Resource Include="Fonts\Montserrat-SemiBold.otf" />
-    <Resource Include="Images\Create.png" />
     <Resource Include="Images\Data-Edit.png" />
     <Resource Include="Images\Data-EditDisabled.png" />
     <Resource Include="Images\Data-EditMouseOver.png" />

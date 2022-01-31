@@ -43,5 +43,12 @@ namespace Glosserie.WPF.Controls
             add { AddHandler(OpenDropDownEvent, value); }
             remove { RemoveHandler(OpenDropDownEvent, value); }
         }
+
+        public void RaiseOpenDropDownEvent()
+        {
+            RoutedEventArgs newEventArgs = new RoutedEventArgs(CreateVocabListForm.OpenDropDownEvent);
+            RaiseEvent(newEventArgs);
+        }
     }
+
 }
