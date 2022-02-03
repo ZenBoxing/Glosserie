@@ -29,12 +29,14 @@ namespace Glosserie.WPF.ViewModels
         }
 
         public ICommand OpenCreateListModalCommand { get; }
+        public ICommand CloseCreateListModalCommand { get; }
 
         public HomeViewModel(VocabListsViewModel vocabListsViewModel)
         {
             VocabListsViewModel = vocabListsViewModel;
 
             OpenCreateListModalCommand = new DelegateCommand(() => IsCreateListModalOpen = true);
+            CloseCreateListModalCommand = new DelegateCommand(() => IsCreateListModalOpen = false);
         }
 
 	}
