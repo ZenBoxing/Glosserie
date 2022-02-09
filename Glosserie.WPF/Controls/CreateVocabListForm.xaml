@@ -33,17 +33,13 @@
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center">
-                <Label Content="Add File: "
-                   FontFamily="{StaticResource MontserratRegular}"
-                   Foreground="{StaticResource MidnightBlueBrush}"
-                   FontSize="20"
-                   VerticalAlignment="Center"
-                   Margin="40 20 0 0"/>
-                <TextBox Width="150"
-                         Height="30"
-                         Margin="0 20 0 0"
-                         VerticalAlignment="Center"/>
-            </StackPanel>
+            <Button Content="Add File"
+                    FontFamily="{StaticResource MontserratRegular}"
+                    FontSize="20"
+                    Padding="5"
+                    Command="{Binding OpenFileDialogBoxCommand}"/>
+                    
+        </StackPanel>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center">
