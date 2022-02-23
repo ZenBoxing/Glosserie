@@ -52,12 +52,13 @@
                 <TextBox Width="150"
                          Height="30"
                          Margin="0 20 0 0"
-                         VerticalAlignment="Center"/>
+                         VerticalAlignment="Center"
+                         Text="{Binding ListName, Mode=TwoWay}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center">
-                <Label Content="Words: "
+                <Label Content="Number of Words: "
                    FontFamily="{StaticResource MontserratRegular}"
                    Foreground="{StaticResource MidnightBlueBrush}"
                    FontSize="20"
@@ -67,7 +68,9 @@
                          Height="30"
                          Margin="0 20 0 0" 
                          Background="{StaticResource MidnightBlueBrush}"
-                         VerticalAlignment="Center"/>
+                         VerticalAlignment="Center"
+                         ItemsSource="{Binding ListLengthOptions}"
+                         SelectedItem="{Binding SelectedListLengthOption}"/>
             </StackPanel>
             <Button Content="CREATE"
                     Height="30"

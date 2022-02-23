@@ -32,12 +32,50 @@ namespace Glosserie.WPF.ViewModels
             }
         }
 
+        private string _ListName;
+        public string ListName
+        {
+            get
+            {
+                return _ListName;
+            }
+            set
+            {
+                _ListName = value;
+                OnPropertyChanged(nameof(ListName));
+            }
+        }
+
+        private int[] _ListLengthOptions;
+
+        public int[] ListLengthOptions
+        {
+            get { return _ListLengthOptions; }
+            set { _ListLengthOptions = value; }
+        } 
+
+
+        private int _selectedListLengthOption;
+        public int SelectedListLengthOption
+        {
+            get
+            {
+                return _selectedListLengthOption;
+            }
+            set
+            {
+                _selectedListLengthOption = value;
+                OnPropertyChanged(nameof(SelectedListLengthOption));
+            }
+        }
+
         public ICommand OpenCreateListModalCommand { get; }
         public ICommand CloseCreateListModalCommand { get; }
         public ICommand OpenFileDialogBoxCommand { get; }
 
         public HomeViewModel(VocabListsViewModel vocabListsViewModel)
         {
+            LoadListLengthOptions();
             VocabListsViewModel = vocabListsViewModel;
             VocabListOptionsModel = new VocabListOptionsModel();
 
@@ -55,6 +93,11 @@ namespace Glosserie.WPF.ViewModels
                 VocabListOptionsModel.FileContents = File.ReadAllBytes(openFileDialog.FileName);
             }
             //openFileDialog.ShowDialog();
+        }
+
+        public void LoadListLengthOptions()
+        { 
+            ListLengthOptions = new int[]{ 10, 15, 25, 50 };
         }
 	}
 }
