@@ -1,5 +1,6 @@
 ﻿using Glosserie.WPF.Library.Models;
 using Glosserie.WPF.Library.State.Authenticators;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,6 +15,18 @@ namespace Glosserie.WPF.Library.Services
         public VocabListService(IAuthenticator authenticator)
         {
             _authenticator = authenticator;
+        }
+
+        public async Task<bool> GetCreateVocabList(VocabListOptionsModel options)
+        {
+            using (GlosserieHttpClient client = new GlosserieHttpClient())
+            {
+                string uri = "vocablists";
+                var success = await client.PostAsync<bool, VocabListOptionsModel>(uri, options);
+
+                return success;
+            }
+
         }
 
         public async Task<List<VocabListModel>> GetVocabLists()

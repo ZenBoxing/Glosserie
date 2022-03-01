@@ -32,26 +32,26 @@ namespace Glosserie.WPF.ViewModels
             }
         }
 
-        private string _ListName;
+        private string _listName;
         public string ListName
         {
             get
             {
-                return _ListName;
+                return _listName;
             }
             set
             {
-                _ListName = value;
+                _listName = value;
                 OnPropertyChanged(nameof(ListName));
             }
         }
 
-        private int[] _ListLengthOptions;
+        private int[] _listLengthOptions;
 
         public int[] ListLengthOptions
         {
-            get { return _ListLengthOptions; }
-            set { _ListLengthOptions = value; }
+            get { return _listLengthOptions; }
+            set { _listLengthOptions = value; }
         } 
 
 
