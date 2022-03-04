@@ -55,6 +55,7 @@ namespace Glosserie.WPF
             services.AddTransient<CreateViewModel>();
             services.AddTransient<HomeViewModel>();
             services.AddTransient<VocabListsViewModel>();
+            services.AddTransient<CreateVocabListFormViewModel>();
 
             services.AddScoped<ShellViewModel>();
             services.AddScoped<MainWindow>(s => new MainWindow {

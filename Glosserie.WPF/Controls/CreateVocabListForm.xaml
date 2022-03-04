@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:Glosserie.WPF.Controls"
              mc:Ignorable="d"
              x:Name="_this"
-             d:DesignHeight="450" d:DesignWidth="300">
+             d:DesignHeight="450" d:DesignWidth="300"
+             DataContext="{Binding CreateVocabListFormViewModel}">
        
         <StackPanel x:Name="MainControlPanel"
                     Orientation="Vertical"

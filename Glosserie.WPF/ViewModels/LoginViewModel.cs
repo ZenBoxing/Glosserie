@@ -67,7 +67,7 @@ namespace Glosserie.WPF.ViewModels
                 (new NavigationService(navStore, () => new RegisterViewModel(navStore,authenticator,vocabListService)));
 
             LoginNavigateCommand = new LoginNavigateCommand(this, new NavigationService(navStore,
-                () => new HomeViewModel(new VocabListsViewModel(vocabListService))),
+                () => new HomeViewModel(new VocabListsViewModel(vocabListService), new CreateVocabListFormViewModel(vocabListService))),
                 authenticator, (Exception ex) => StatusMessage = ex.Message);
         }
     }

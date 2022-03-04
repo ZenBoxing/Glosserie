@@ -17,7 +17,7 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
-        <modalcontrol:Modal Panel.ZIndex="100" IsOpen="{Binding IsCreateListModalOpen}">
+        <modalcontrol:Modal Panel.ZIndex="100" IsOpen="{Binding CreateVocabListFormViewModel.IsCreateListModalOpen}">
             <controls:CreateVocabListForm/>
         </modalcontrol:Modal>
         <Grid Background="{StaticResource RussianVioletBrush}">
@@ -49,7 +49,7 @@
                             HorizontalAlignment="Right"
                             Margin="0,5,20,5">
                         
-                        <Button Style="{StaticResource CreateListButton}" Command="{Binding OpenCreateListModalCommand}"/>
+                        <Button Style="{StaticResource CreateListButton}" Command="{Binding CreateVocabListFormViewModel.OpenCreateListModalCommand}"/>
                         <Button Style="{StaticResource EditButton}"/>
                         <Button Style="{StaticResource DeleteButton}"
                             />
