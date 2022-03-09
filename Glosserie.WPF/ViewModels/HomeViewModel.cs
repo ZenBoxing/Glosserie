@@ -17,14 +17,10 @@ namespace Glosserie.WPF.ViewModels
         public VocabListsViewModel VocabListsViewModel { get; set; }
         public CreateVocabListFormViewModel CreateVocabListFormViewModel { get; set; }
 
-        
-
         public HomeViewModel(VocabListsViewModel vocabListsViewModel, CreateVocabListFormViewModel createVocabListFormViewModel)
         {
-            
             VocabListsViewModel = vocabListsViewModel;
             CreateVocabListFormViewModel = createVocabListFormViewModel;
-            
         }
 
        

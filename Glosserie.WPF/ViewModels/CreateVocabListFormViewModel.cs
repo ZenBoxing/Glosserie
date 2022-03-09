@@ -1,20 +1,23 @@
 ﻿using Glosserie.WPF.Commands;
 using Glosserie.WPF.Library.Models;
 using Glosserie.WPF.Library.Services;
+using Glosserie.WPF.Library.State.Authenticators;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Glosserie.WPF.ViewModels
 {
     public class CreateVocabListFormViewModel : ViewModelBase
     {
-        private readonly IVocabListService _vocabListService;
+        public string StatusMessage;
 
-        public VocabListOptionsModel VocabListOptionsModel { get; set; }
+        private readonly IAuthenticator _authenticator;
+        private readonly IVocabListService _vocabListService;
 
         private bool _isCreateListModalOpen;
         public bool IsCreateListModalOpen
@@ -67,17 +70,34 @@ namespace Glosserie.WPF.ViewModels
             }
         }
 
+        private byte[] _fileContents;
+        public byte[] FileContents
+        {
+            get
+            {
+                return _fileContents;
+            }
+            set
+            {
+                _fileContents = value;
+                OnPropertyChanged(nameof(FileContents));
+            }
+        }
+
         public ICommand OpenCreateListModalCommand { get; }
         public ICommand CloseCreateListModalCommand { get; }
         public ICommand OpenFileDialogBoxCommand { get; }
+        public ICommand CreateVocabListCommand { get; }
 
-        public CreateVocabListFormViewModel(IVocabListService vocabListService)
+        public CreateVocabListFormViewModel(IVocabListService vocabListService, IAuthenticator authenticator)
         {
             LoadListLengthOptions();
             _vocabListService = vocabListService;
+            _authenticator = authenticator;
 
             OpenCreateListModalCommand = new DelegateCommand(() => IsCreateListModalOpen = true);
             CloseCreateListModalCommand = new DelegateCommand(() => IsCreateListModalOpen = false);
+            CreateVocabListCommand = new AsyncDelegateCommand(CreateVocabList, (ex) => StatusMessage = ex.Message);
 
             OpenFileDialogBoxCommand = new DelegateCommand(OpenFileDialogBox);
         }
@@ -88,7 +108,7 @@ namespace Glosserie.WPF.ViewModels
             openFileDialog.Filter = "PDF Files (*.pdf)| *.pdf";
             if (openFileDialog.ShowDialog() == true)
             {
-                VocabListOptionsModel.FileContents = File.ReadAllBytes(openFileDialog.FileName);
+               FileContents = File.ReadAllBytes(openFileDialog.FileName);
             }
             //openFileDialog.ShowDialog();
         }
@@ -96,6 +116,18 @@ namespace Glosserie.WPF.ViewModels
         public void LoadListLengthOptions()
         {
             ListLengthOptions = new int[] { 10, 15, 25, 50 };
+        }
+
+        public async Task CreateVocabList()
+        {
+            VocabListOptionsModel options = new VocabListOptionsModel
+            {
+                UserId = _authenticator.CurrentUser.UserID,
+                FileContents = _fileContents,
+                Length = _selectedListLengthOption,
+                ListName = _listName
+            };
+            var success = await _vocabListService.GetCreateVocabList(options);
         }
     }
 }

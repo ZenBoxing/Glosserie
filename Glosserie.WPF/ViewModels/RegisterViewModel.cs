@@ -78,7 +78,7 @@ namespace Glosserie.WPF.ViewModels
         {
             RegisterNavigateCommand = new RegisterNavigateCommand
                 (new NavigationService(navigationStore,
-                () => new HomeViewModel(new VocabListsViewModel(vocabListService), new CreateVocabListFormViewModel(vocabListService))),
+                () => new HomeViewModel(new VocabListsViewModel(vocabListService), new CreateVocabListFormViewModel(vocabListService, authenticator))),
                 authenticator,
                 this,
                 (Exception ex) => StatusMessage = ex.Message);
