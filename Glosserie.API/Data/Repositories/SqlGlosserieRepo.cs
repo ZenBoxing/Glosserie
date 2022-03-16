@@ -32,7 +32,7 @@ namespace Glosserie.API.Data.Repositories
             //potential options would be number of words and frequency of words
             
             //create VocabListModel
-            VocabListModel vocabListModel = new VocabListModel { ListName = options.ListName,
+            VocabListInsertModel vocabListModel = new VocabListInsertModel { ListName = options.ListName,
                                                                  UserId = options.UserId};
             //check if listname already exists for this user
             var listname = _sqlDataAccess.LoadData<VocabListModel, dynamic>
@@ -42,7 +42,7 @@ namespace Glosserie.API.Data.Repositories
             if (listname.Count > 0) throw new ListNameAlreadyExistsException("List name already exist for this user",vocabListModel.ListName);
             
             //save VocabListModel to database (look into sql transactions)
-            _sqlDataAccess.SaveData<VocabListModel>("spInsertVocabList", vocabListModel, "GlosserieSSAuth");
+            _sqlDataAccess.SaveData<VocabListInsertModel>("ListeraDB.listeradb.spInsertVocabList", vocabListModel, "GlosserieSSAuth");
 
 
 
@@ -86,17 +86,17 @@ namespace Glosserie.API.Data.Repositories
 
                 //remove entries not found in dictionary
                 entries.RemoveAll(x => x.EntryID == 0);
-                //get 25 least common words by wordrank
+                //get least common words by wordrank
                 List<EntryModel> sortedEntries = entries.OrderBy(x => x.WordRank).ToList();
 
-                if (sortedEntries.Count > 25)
+                if (sortedEntries.Count > options.Length)
                 {
-                    sortedEntries.RemoveRange(25, sortedEntries.Count - 25);
+                    sortedEntries.RemoveRange(options.Length, sortedEntries.Count - options.Length);
                 }
 
                 //get listid from database
                 var listFromDB = _sqlDataAccess.LoadData<VocabListModel, dynamic>
-                    ("ListeraDB.listeradb.spGetListByListName", new { listname = "TestData", userID = 1 }, "GlosserieSSAuth");
+                    ("ListeraDB.listeradb.spGetListByName", new { listname = options.ListName, userID = options.UserId }, "GlosserieSSAuth");
 
 
 
