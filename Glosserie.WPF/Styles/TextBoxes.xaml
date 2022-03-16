@@ -9,11 +9,12 @@
         <Setter Property="Background" Value="{StaticResource BabyPowderBrush}"/>
         <Setter Property="BorderBrush" Value="{StaticResource IsabellineBrush}"/>
         <Setter Property="Foreground" Value="{StaticResource RussianVioletBrush}"/>
-        <Setter Property="FontFamily" Value="{StaticResource MontserratLight}"/>
+        <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"/>
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="AllowDrop" Value="true"/>
         <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
@@ -59,6 +60,62 @@
                             </TextBlock.Style>
                         </TextBlock>
 
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="true">
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                    <Condition Property="IsSelectionActive" Value="false"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+            </MultiTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="CreateVocabListFormTextBox" TargetType="{x:Type TextBox}">
+        <Setter Property="Background" Value="{StaticResource LavenderWebBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource IsabellineBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource RussianVioletBrush}"/>
+        <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="AllowDrop" Value="true"/>
+        <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Grid>
+                        <Border x:Name="border" 
+                            Background="{TemplateBinding Background}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            CornerRadius="2"
+                            Padding="2"
+                            SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" 
+                                      Focusable="false" 
+                                      HorizontalScrollBarVisibility="Hidden" 
+                                      VerticalScrollBarVisibility="Hidden"
+                                      VerticalContentAlignment="Center"/>
+
+                        </Border>
+                        
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="false">

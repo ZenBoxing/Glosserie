@@ -33,7 +33,8 @@
         </StackPanel>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center"
-                        VerticalAlignment="Center">
+                        VerticalAlignment="Center" 
+                        Margin="0 10 0 0">
             <Button Content="Add File"
                     FontFamily="{StaticResource MontserratRegular}"
                     FontSize="20"
@@ -42,28 +43,30 @@
                     
         </StackPanel>
             <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Center"
+                        HorizontalAlignment="Left"
                         VerticalAlignment="Center">
-                <Label Content="List Name"
+                <Label Content="List Name: "
                    FontFamily="{StaticResource MontserratRegular}"
                    Foreground="{StaticResource MidnightBlueBrush}"
                    FontSize="20"
                    VerticalAlignment="Center"
                    Margin="40 20 0 0"/>
-                <TextBox Width="150"
+                <TextBox Width="125"
                          Height="30"
                          Margin="0 20 0 0"
                          VerticalAlignment="Center"
+                         Style="{StaticResource CreateVocabListFormTextBox}"
                          Text="{Binding ListName, Mode=TwoWay}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Center"
+                        HorizontalAlignment="Left"
                         VerticalAlignment="Center">
-                <Label Content="Number of Words: "
+                <Label Content="Word Count "
                    FontFamily="{StaticResource MontserratRegular}"
                    Foreground="{StaticResource MidnightBlueBrush}"
                    FontSize="20"
                    VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
                    Margin="40 20 0 0"/>
                 <ComboBox Width="100"
                          Height="30"
@@ -76,6 +79,7 @@
             <Button Content="CREATE"
                     Height="30"
                     Width="70"
-                    Margin="0 30"/>
+                    Margin="0 30"
+                    Command="{Binding CreateVocabListCommand}"/>
         </StackPanel>
 </UserControl>
