@@ -37,8 +37,8 @@
                         Margin="0 10 0 0">
             <Button Content="Add File"
                     FontFamily="{StaticResource MontserratRegular}"
-                    FontSize="20"
                     Padding="5"
+                    Style="{StaticResource CreateListFormButton}"
                     Command="{Binding OpenFileDialogBoxCommand}"/>
                     
         </StackPanel>
@@ -78,8 +78,10 @@
             </StackPanel>
             <Button Content="CREATE"
                     Height="30"
-                    Width="70"
+                    Width="80"
                     Margin="0 30"
+                    FontSize="16"
+                    Style="{StaticResource CreateListFormButton}"
                     Command="{Binding CreateVocabListCommand}"/>
         </StackPanel>
 </UserControl>
