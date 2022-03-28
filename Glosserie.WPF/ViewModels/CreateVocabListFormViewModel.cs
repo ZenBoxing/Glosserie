@@ -19,6 +19,8 @@ namespace Glosserie.WPF.ViewModels
         private readonly IAuthenticator _authenticator;
         private readonly IVocabListService _vocabListService;
 
+        public bool IsFileValid => FileContents != null;
+
         private bool _isCreateListModalOpen;
         public bool IsCreateListModalOpen
         {
@@ -81,6 +83,7 @@ namespace Glosserie.WPF.ViewModels
             {
                 _fileContents = value;
                 OnPropertyChanged(nameof(FileContents));
+                OnPropertyChanged(nameof(IsFileValid));
             }
         }
 

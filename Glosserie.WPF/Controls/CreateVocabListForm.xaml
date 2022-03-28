@@ -8,6 +8,10 @@
              x:Name="_this"
              d:DesignHeight="450" d:DesignWidth="300"
              DataContext="{Binding CreateVocabListFormViewModel}">
+    
+        <UserControl.Resources>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        </UserControl.Resources>
        
         <StackPanel x:Name="MainControlPanel"
                     Orientation="Vertical"
@@ -40,7 +44,16 @@
                     Padding="5"
                     Style="{StaticResource CreateListFormButton}"
                     Command="{Binding OpenFileDialogBoxCommand}"/>
-                    
+            
+                <Label Content="✔"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   FontSize="18"
+                   Margin="4 0 0 0"
+                   Foreground="Green"
+                   Visibility="{Binding IsFileValid, Converter={StaticResource BooleanToVisibilityConverter}}"
+                />
+
         </StackPanel>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Left"
@@ -68,14 +81,23 @@
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    Margin="40 20 0 0"/>
-                <ComboBox Width="100"
+            <ComboBox Width="100"
                          Height="30"
                          Margin="0 20 0 0" 
-                         Background="{StaticResource MidnightBlueBrush}"
+                         Background="{StaticResource LavenderWebBrush}"
+                         FontSize="16"
                          VerticalAlignment="Center"
                          ItemsSource="{Binding ListLengthOptions}"
-                         SelectedItem="{Binding SelectedListLengthOption}"/>
-            </StackPanel>
+                         SelectedItem="{Binding SelectedListLengthOption}">
+                <ComboBox.ItemContainerStyle>
+                    <Style TargetType="ComboBoxItem">
+                        <Setter Property="Background" Value="{StaticResource LavenderWebBrush}"/>
+                        <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"/>
+                        <Setter Property="FontSize" Value="16"/>
+                    </Style>
+                </ComboBox.ItemContainerStyle>
+            </ComboBox>
+        </StackPanel>
             <Button Content="CREATE"
                     Height="30"
                     Width="80"
