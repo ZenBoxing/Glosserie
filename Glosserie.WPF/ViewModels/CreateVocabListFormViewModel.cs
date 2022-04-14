@@ -21,6 +21,20 @@ namespace Glosserie.WPF.ViewModels
 
         public bool IsFileValid => FileContents != null;
 
+        private bool _isCreateListSuccessful;
+        public bool IsCreateListSuccessful
+        {
+            get
+            {
+                return _isCreateListSuccessful;
+            }
+            set
+            {
+                _isCreateListSuccessful = value;
+                OnPropertyChanged(nameof(IsCreateListSuccessful));
+            }
+        }
+
         private bool _isCreateListModalOpen;
         public bool IsCreateListModalOpen
         {
@@ -130,7 +144,7 @@ namespace Glosserie.WPF.ViewModels
                 Length = _selectedListLengthOption,
                 ListName = _listName
             };
-            var success = await _vocabListService.GetCreateVocabList(options);
+            IsCreateListSuccessful = await _vocabListService.GetCreateVocabList(options);
         }
     }
 }

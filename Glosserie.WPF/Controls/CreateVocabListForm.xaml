@@ -47,7 +47,7 @@
             
                 <Label Content="✔"
                    VerticalAlignment="Center"
-                   HorizontalAlignment="Center"
+                   HorizontalAlignment="Right"
                    FontSize="18"
                    Margin="4 0 0 0"
                    Foreground="Green"
@@ -98,12 +98,21 @@
                 </ComboBox.ItemContainerStyle>
             </ComboBox>
         </StackPanel>
+        <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Center">
             <Button Content="CREATE"
                     Height="30"
                     Width="80"
-                    Margin="0 30"
+                    Margin="0 30 0 0"
                     FontSize="16"
                     Style="{StaticResource CreateListFormButton}"
                     Command="{Binding CreateVocabListCommand}"/>
+            <Label Content="Success!"
+                   HorizontalAlignment="Center"
+                   FontFamily="{StaticResource MontserratRegular}"
+                   Foreground="{StaticResource MidnightBlueBrush}"
+                   Visibility="{Binding IsCreateListSuccessful, Converter={StaticResource BooleanToVisibilityConverter}}"
+                   />
         </StackPanel>
+    </StackPanel>
 </UserControl>
