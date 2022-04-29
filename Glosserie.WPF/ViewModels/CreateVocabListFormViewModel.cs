@@ -2,6 +2,7 @@
 using Glosserie.WPF.Library.Models;
 using Glosserie.WPF.Library.Services;
 using Glosserie.WPF.Library.State.Authenticators;
+using Glosserie.WPF.Stores;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,8 @@ namespace Glosserie.WPF.ViewModels
     public class CreateVocabListFormViewModel : ViewModelBase
     {
         public string StatusMessage;
+
+        private readonly VocabListStore _vocabListStore;
 
         private readonly IAuthenticator _authenticator;
         private readonly IVocabListService _vocabListService;
@@ -106,7 +109,7 @@ namespace Glosserie.WPF.ViewModels
         public ICommand OpenFileDialogBoxCommand { get; }
         public ICommand CreateVocabListCommand { get; }
 
-        public CreateVocabListFormViewModel(IVocabListService vocabListService, IAuthenticator authenticator)
+        public CreateVocabListFormViewModel(IVocabListService vocabListService, IAuthenticator authenticator, VocabListStore vocabListStore)
         {
             LoadListLengthOptions();
             _vocabListService = vocabListService;
@@ -117,6 +120,7 @@ namespace Glosserie.WPF.ViewModels
             CreateVocabListCommand = new AsyncDelegateCommand(CreateVocabList, (ex) => StatusMessage = ex.Message);
 
             OpenFileDialogBoxCommand = new DelegateCommand(OpenFileDialogBox);
+            _vocabListStore = vocabListStore;
         }
 
         public void OpenFileDialogBox()
@@ -145,6 +149,7 @@ namespace Glosserie.WPF.ViewModels
                 ListName = _listName
             };
             IsCreateListSuccessful = await _vocabListService.GetCreateVocabList(options);
+            if (IsCreateListSuccessful) await _vocabListStore.LoadVocabListsAsync();
         }
     }
 }
