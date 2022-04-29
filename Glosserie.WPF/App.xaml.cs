@@ -44,6 +44,7 @@ namespace Glosserie.WPF
             IServiceCollection services = new ServiceCollection();
 
             services.AddSingleton<NavigationStore>();
+            services.AddSingleton<VocabListStore>();
 
             services.AddSingleton<IVocabListService, VocabListService>();
             services.AddSingleton<INavigationService, NavigationService>();
