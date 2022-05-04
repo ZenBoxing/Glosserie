@@ -39,5 +39,23 @@ namespace Glosserie.WPF.Library.Services
                 return records;
             }
         }
+
+        public async Task<bool> DeleteVocabList(int listID)
+        { 
+            using(GlosserieHttpClient client = new GlosserieHttpClient())
+            {
+                string uri = "vocablists";
+                var responseMessage = await client.DeleteAsync(uri);
+
+                if(responseMessage.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                else 
+                {
+                    return false;
+                }
+            }
+        }
     }
 }

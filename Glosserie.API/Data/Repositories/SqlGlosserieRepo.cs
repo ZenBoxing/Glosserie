@@ -29,7 +29,6 @@ namespace Glosserie.API.Data.Repositories
         public bool CreateVocabList(VocabListOptionsModel options)
         {
             bool success = false;
-            //potential options would be number of words and frequency of words
             
             //create VocabListModel
             VocabListInsertModel vocabListModel = new VocabListInsertModel { ListName = options.ListName,
@@ -112,6 +111,7 @@ namespace Glosserie.API.Data.Repositories
             {
                 string message = ex.Message;
                 string trace = ex.StackTrace;
+
             }
             return success;
 

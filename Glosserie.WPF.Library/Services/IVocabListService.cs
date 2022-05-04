@@ -9,5 +9,6 @@ namespace Glosserie.WPF.Library.Services
     {
         Task<List<VocabListModel>> GetVocabLists();
         Task<bool> GetCreateVocabList(VocabListOptionsModel options);
+        Task<bool> DeleteVocabList(int listID);
     }
 }

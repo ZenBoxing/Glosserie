@@ -32,11 +32,14 @@ namespace Glosserie.WPF.ViewModels
 
         private readonly IVocabListService _vocabListService;
 		public ICommand LoadVocabListsCommand { get; set; }
+		public ICommand DeleteSelectedVocabListCommand { get; set; }
 
         public VocabListsViewModel(IVocabListService vocabListService, VocabListStore vocabListStore)
         {
             _vocabListService = vocabListService;
             LoadVocabListsCommand = new AsyncDelegateCommand(LoadVocabListsAsync, (ex) => StatusMessage = ex.Message);
+			DeleteSelectedVocabListCommand = new AsyncDelegateCommand(DeleteSelectedVocabListAsync,
+				(ex) => StatusMessage = ex.Message);
             _vocabListStore = vocabListStore;
 			_vocabListStore.VocabListsChanged += OnVocabListsChanged;
         }
@@ -50,6 +53,11 @@ namespace Glosserie.WPF.ViewModels
         private async Task LoadVocabListsAsync()
 		{
 			await _vocabListStore.LoadVocabListsAsync();
+		}
+
+		private async Task DeleteSelectedVocabListAsync()
+		{
+			await _vocabListService.DeleteVocabList(_selectedVocabList.ListId);
 		}
 
 		//private List<VocabListItemViewModel> CreateVocabListViewModels(ICollection<VocabListModel> vocabListModels)
