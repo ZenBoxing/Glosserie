@@ -19,21 +19,6 @@ namespace Glosserie.API.Controllers
             _repo = repo;
         }
 
-        //[HttpGet]
-        //public ActionResult<IEnumerable<VocabListModel>> GetAllVocabLists()
-        //{
-        //    var vocabLists = _repo.GetVocabLists();
-
-        //    return Ok(vocabLists);
-        //}
-
-        //[HttpGet("{listID}")]
-        //public ActionResult<IEnumerable<VocabListModel>> GetVocabListsById(int listID)
-        //{
-        //    var vocabList = repo.GetVocabListsById(listID);
-
-        //    return Ok(vocabList);
-        //}
 
         [HttpGet("{userID}")]
         public ActionResult<IEnumerable<VocabListModel>> GetVocabListsByUser(int userID)
@@ -52,12 +37,6 @@ namespace Glosserie.API.Controllers
         }
 
 
-        //[HttpPost]
-        //public void PostVocabList(VocabListOptionsModel options)
-        //{
-        //    _repo.CreateVocabList(options);
-        //    //return response at some point
-        //}
         [HttpPost]
         public ActionResult<bool> PostVocabList(VocabListOptionsModel options)
         {

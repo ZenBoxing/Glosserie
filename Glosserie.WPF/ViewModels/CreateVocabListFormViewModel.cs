@@ -131,7 +131,6 @@ namespace Glosserie.WPF.ViewModels
             {
                FileContents = File.ReadAllBytes(openFileDialog.FileName);
             }
-            //openFileDialog.ShowDialog();
         }
 
         public void LoadListLengthOptions()

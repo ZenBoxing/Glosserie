@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Glosserie.WPF.ViewModels
@@ -57,12 +58,15 @@ namespace Glosserie.WPF.ViewModels
 			
 		private async Task DeleteSelectedVocabListAsync()
 		{
-			//await _vocabListService.DeleteVocabList(_selectedVocabList.ListId);
-			if (await _vocabListService.DeleteVocabList(_selectedVocabList.ListId))
-			{
-				await _vocabListStore.LoadVocabListsAsync();
-			}
-			//if (success) await _vocabListStore.LoadVocabListsAsync();
+			MessageBoxResult result = MessageBox.Show("Do you want to delete this list?", "Glosserie",
+				MessageBoxButton.YesNo, MessageBoxImage.Exclamation,MessageBoxResult.Yes);
+            if (result == MessageBoxResult.Yes)
+            {
+                if (await _vocabListService.DeleteVocabList(_selectedVocabList.ListId))
+                {
+                    await _vocabListStore.LoadVocabListsAsync();
+                } 
+            }
 		}
 
 		//private List<VocabListItemViewModel> CreateVocabListViewModels(ICollection<VocabListModel> vocabListModels)
