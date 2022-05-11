@@ -54,10 +54,15 @@ namespace Glosserie.WPF.ViewModels
 		{
 			await _vocabListStore.LoadVocabListsAsync();
 		}
-
+			
 		private async Task DeleteSelectedVocabListAsync()
 		{
-			await _vocabListService.DeleteVocabList(_selectedVocabList.ListId);
+			//await _vocabListService.DeleteVocabList(_selectedVocabList.ListId);
+			if (await _vocabListService.DeleteVocabList(_selectedVocabList.ListId))
+			{
+				await _vocabListStore.LoadVocabListsAsync();
+			}
+			//if (success) await _vocabListStore.LoadVocabListsAsync();
 		}
 
 		//private List<VocabListItemViewModel> CreateVocabListViewModels(ICollection<VocabListModel> vocabListModels)

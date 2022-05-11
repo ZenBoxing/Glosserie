@@ -72,7 +72,7 @@ namespace Glosserie.API.Controllers
             }
         }
 
-        [HttpDelete]
+        [HttpDelete("{listID}")]
         public IActionResult DeleteVocabList(int listID)
         {
             bool success = _repo.DeleteList(listID);

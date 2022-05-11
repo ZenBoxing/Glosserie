@@ -51,8 +51,7 @@
                         
                         <Button Style="{StaticResource CreateListButton}" Command="{Binding CreateVocabListFormViewModel.OpenCreateListModalCommand}"/>
                         <Button Style="{StaticResource EditButton}"/>
-                        <Button Style="{StaticResource DeleteButton}"
-                            />
+                        <Button Style="{StaticResource DeleteButton}" Command="{Binding VocabListsViewModel.DeleteSelectedVocabListCommand }"/>
                     </StackPanel>
                 </Border>
                 <Border x:Name="MidControl"

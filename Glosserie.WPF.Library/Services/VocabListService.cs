@@ -44,7 +44,7 @@ namespace Glosserie.WPF.Library.Services
         { 
             using(GlosserieHttpClient client = new GlosserieHttpClient())
             {
-                string uri = "vocablists";
+                string uri = "vocablists/" + listID.ToString();
                 var responseMessage = await client.DeleteAsync(uri);
 
                 if(responseMessage.IsSuccessStatusCode)
