@@ -109,12 +109,17 @@ namespace Glosserie.API.Data.Repositories
             }
             catch (Exception ex)
             {
+                var listFromDB = _sqlDataAccess.LoadData<VocabListModel, dynamic>
+                    ("ListeraDB.listeradb.spGetListByName", new { listname = options.ListName, userID = options.UserId }, "GlosserieSSAuth");
+                DeleteList(listFromDB[0].ListId);
+
                 string message = ex.Message;
                 string trace = ex.StackTrace;
-
+                
             }
+                
             return success;
-
+            
         }
 
         public bool DeleteList(int listID)
