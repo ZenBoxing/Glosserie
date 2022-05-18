@@ -7,11 +7,54 @@
         xmlns:local="clr-namespace:Glosserie.WPF" 
         mc:Ignorable="d"
         Title="MainWindow" Height="650" Width="1000"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None" ResizeMode="NoResize"
+        MouseDown="Window_MouseDown">
 
-   
-    <Grid>
+
+    <DockPanel>
+            <StackPanel
+            Height="35"
+            Orientation="Horizontal"
+            DockPanel.Dock="Top" 
+            Background="{StaticResource RussianVioletBrush}"
+            >
+                <Label Content="GLOSSERIE" 
+                   FontFamily="{StaticResource MontserratRegular}"
+                   Foreground="{StaticResource BabyPowderBrush}"
+                   VerticalAlignment="Center"
+                   FontSize="16"
+                   Padding="8 0 0 0"
+                   Margin="450 0 0 0"
+                   />
+                <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Margin="400 0 0 0">
+                    <Button
+                    x:Name="MinimizeWindowButton"
+                    Content="─"
+                    BorderThickness="0"
+                    FontSize="25"
+                    VerticalAlignment="Center"
+                    Background="Transparent"
+                    Foreground="{StaticResource BabyPowderBrush}"
+                    Command="{Binding MinimizeCommand}"/>
+                    <Button 
+                    x:Name="CloseWindowButton"
+                    Content="×"
+                    VerticalContentAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    Padding="0 0 0 5"
+                    FontSize="25"
+                    BorderThickness="0"
+                    Background="Transparent"
+                    Margin="10 0 0 0"
+                    Foreground="{StaticResource BabyPowderBrush}"
+                    Command="{Binding CloseCommand}"/>
+                </StackPanel>
+            </StackPanel>
         <ContentControl Content="{Binding ActiveViewModel}">
-        </ContentControl>
-    </Grid>
+            </ContentControl>
+    </DockPanel>
 </Window>
