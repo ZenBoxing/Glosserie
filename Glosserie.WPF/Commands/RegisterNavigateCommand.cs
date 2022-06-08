@@ -15,7 +15,7 @@ namespace Glosserie.WPF.Commands
         private readonly IAuthenticator _authenticator;
         private readonly RegisterViewModel _registerViewModel;
 
-        public RegisterNavigateCommand(INavigationService navigationService, 
+        public RegisterNavigateCommand(INavigationService navigationService,  
             IAuthenticator authenticator, 
             RegisterViewModel registerViewModel, Action<Exception> onException) : base (onException)
         {

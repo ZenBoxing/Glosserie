@@ -23,36 +23,37 @@ namespace Glosserie.API.Services
         public bool Register(string email, string password, string confirmpassword)
         {
             bool success = false;
+            
             if (password == confirmpassword)
             {
-                //hash password
+                    //hash password
 
-                string hashedPassword = _passwordHasher.HashPassword(password);
+                    string hashedPassword = _passwordHasher.HashPassword(password);
 
-                UserInsertModel userInsertModel = new UserInsertModel() 
-                { 
-                    Email = email, 
-                    Password = hashedPassword
-                };
-                //check if email already exists in database
-                var records = _sqlDataAccess.LoadData<UserModel, dynamic>
-                    ("ListeraDB.listeradb.spGetUserByEmail", new { email = userInsertModel.Email}, "GlosserieSSAuth");
-
-                if (records.Count == 0)
-                {
-                    try
+                    UserInsertModel userInsertModel = new UserInsertModel()
                     {
-                        _sqlDataAccess.SaveData<UserInsertModel>
-                            ("ListeraDB.listeradb.spInsertUser", userInsertModel, "GlosserieSSAuth");
-                        success = true;
-                    }
-                    catch (Exception ex)
+                        Email = email,
+                        Password = hashedPassword
+                    };
+                    //check if email already exists in database
+                    var records = _sqlDataAccess.LoadData<UserModel, dynamic>
+                        ("ListeraDB.listeradb.spGetUserByEmail", new { email = userInsertModel.Email }, "GlosserieSSAuth");
+
+                    if (records.Count == 0)
                     {
-                        string message = ex.Message;
-                        string stacktrace = ex.StackTrace;
+                        try
+                        {
+                            _sqlDataAccess.SaveData<UserInsertModel>
+                                ("ListeraDB.listeradb.spInsertUser", userInsertModel, "GlosserieSSAuth");
+                            success = true;
+                        }
+                        catch (Exception ex)
+                        {
+                            string message = ex.Message;
+                            string stacktrace = ex.StackTrace;
+                        }
                     } 
                 }
-            }
 
             return success;
         }
@@ -89,5 +90,6 @@ namespace Glosserie.API.Services
 
             
         }
+
     }
 }

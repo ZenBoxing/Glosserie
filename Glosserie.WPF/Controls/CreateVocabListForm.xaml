@@ -67,6 +67,7 @@
                 <TextBox Width="125"
                          Height="30"
                          Margin="0 20 0 0"
+                         MaxLength="20"
                          VerticalAlignment="Center"
                          Style="{StaticResource CreateVocabListFormTextBox}"
                          Text="{Binding ListName, Mode=TwoWay}"/>

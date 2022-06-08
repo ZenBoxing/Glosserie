@@ -10,5 +10,6 @@ namespace Glosserie.WPF.Library.Services
     {
         Task<bool> Register(RegistrationModel info);
         Task<UserModel> Login(LoginModel info);
+        Task<bool> VerifyEmailAddress(string email);
     }
 }
