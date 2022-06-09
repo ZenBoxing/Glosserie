@@ -76,9 +76,19 @@
                 FontFamily="{StaticResource MontserratRegular}"
                 Visibility="{Binding IsRegistrationInvalid, Converter={StaticResource BooleanToVisibilityConverter}}"
                 />
-                
+                <Button
+                    Content="←"
+                    Grid.Row="7"
+                    Background="Transparent"
+                    Foreground="{StaticResource BabyPowderBrush}"
+                    FontSize="30"
+                    Width="30"
+                    HorizontalAlignment="Left"
+                    BorderThickness="0"
+                    Margin="5 65 0 0"
+                    Command="{Binding NavigateCommand}"/>
             </Grid>
-
+           
         </Border>
     </Grid>
 </UserControl>

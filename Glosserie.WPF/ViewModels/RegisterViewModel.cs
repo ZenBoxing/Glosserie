@@ -73,6 +73,7 @@ namespace Glosserie.WPF.ViewModels
         public bool IsRegistrationInvalid => StatusMessage != null;
 
         public ICommand RegisterNavigateCommand { get; }
+        public ICommand NavigateCommand { get; }
 
         public RegisterViewModel(NavigationStore navigationStore, IAuthenticator authenticator, 
             IVocabListService vocabListService, VocabListStore vocabListStore)
@@ -84,6 +85,9 @@ namespace Glosserie.WPF.ViewModels
                 authenticator,
                 this,
                 (Exception ex) => StatusMessage = ex.Message);
+
+            NavigateCommand = new NavigateCommand(new NavigationService(navigationStore,
+                () => new LoginViewModel(navigationStore,authenticator,vocabListService,vocabListStore)));
 
         }
     }
