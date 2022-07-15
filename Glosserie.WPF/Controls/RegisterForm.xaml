@@ -79,12 +79,10 @@
                 <Button
                     Content="←"
                     Grid.Row="7"
-                    Background="Transparent"
-                    Foreground="{StaticResource BabyPowderBrush}"
+                    Style="{StaticResource TitleBarButton}"
                     FontSize="30"
                     Width="30"
                     HorizontalAlignment="Left"
-                    BorderThickness="0"
                     Margin="5 65 0 0"
                     Command="{Binding NavigateCommand}"/>
             </Grid>
