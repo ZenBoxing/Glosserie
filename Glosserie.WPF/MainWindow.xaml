@@ -12,7 +12,6 @@
         Background="{StaticResource RussianVioletBrush}"
         MouseDown="Window_MouseDown">
 
-
     <DockPanel>
             <StackPanel
             Height="35"
@@ -35,23 +34,15 @@
                     <Button
                     x:Name="MinimizeWindowButton"
                     Content="─"
-                    BorderThickness="0"
-                    FontSize="25"
+                    Style="{StaticResource TitleBarButton}"
                     VerticalAlignment="Center"
-                    Background="Transparent"
-                    Foreground="{StaticResource BabyPowderBrush}"
                     Command="{Binding MinimizeCommand}"/>
-                    <Button 
+                    <Button  
                     x:Name="CloseWindowButton"
                     Content="×"
-                    VerticalContentAlignment="Center"
-                    HorizontalContentAlignment="Center"
+                    Style="{StaticResource TitleBarButton}"
                     Padding="0 0 0 5"
-                    FontSize="25"
-                    BorderThickness="0"
-                    Background="Transparent"
                     Margin="10 0 0 0"
-                    Foreground="{StaticResource BabyPowderBrush}"
                     Command="{Binding CloseCommand}"/>
                 </StackPanel>
             </StackPanel>
